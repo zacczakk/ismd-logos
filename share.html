@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAI Logo Concepts - Structural Analysis Intelligence</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-card: #ffffff;
+      --text-primary: #1a1a2e;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --border-color: #e0e0e0;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --mono-color: #000000;
+      --mono-light: #1a1a1a;
+      --mono-mid: #444444;
+      --mono-dark: #6a6a6a;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f0f1a;
+      --bg-secondary: #1a1a2e;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --text-primary: #ffffff;
+      --text-secondary: #ccc;
+      --text-muted: #888;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --mono-color: #ffffff;
+      --mono-light: #ffffff;
+      --mono-mid: #bbbbbb;
+      --mono-dark: #888888;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg-primary);
+      min-height: 100vh;
+      color: var(--text-primary);
+      padding: 40px 20px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #4285F4, #9B72CF, #F28B82);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    [data-color="mono"] h1 {
+      background: none;
+      -webkit-text-fill-color: var(--text-primary);
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    /* Toggle Controls */
+    .controls {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .toggle-row span {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      min-width: 60px;
+    }
+
+    .toggle-row span:first-child {
+      text-align: right;
+    }
+
+    .toggle-row span:last-child {
+      text-align: left;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background: linear-gradient(135deg, #4285F4, #9B72CF);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-switch.mono-toggle {
+      background: linear-gradient(135deg, #666, #999);
+    }
+
+    [data-color="mono"] .toggle-switch.mono-toggle {
+      background: linear-gradient(135deg, #333, #666);
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="dark"] .toggle-switch.theme-toggle::before {
+      transform: translateX(30px);
+    }
+
+    [data-color="mono"] .toggle-switch.mono-toggle::before {
+      transform: translateX(30px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    [data-theme="dark"] .card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo-container {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container svg {
+      max-width: 140px;
+      max-height: 140px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .variation-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #4285F4, #9B72CF);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+
+    [data-color="mono"] .variation-number {
+      background: var(--mono-color);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Monochrome mode - hide gradient versions, show mono versions */
+    .mono-version {
+      display: none;
+    }
+
+    [data-color="mono"] .gradient-version {
+      display: none;
+    }
+
+    [data-color="mono"] .mono-version {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Structural Analysis Intelligence</h1>
+    <p class="subtitle">Logo Design Concepts</p>
+    
+    <div class="controls">
+      <div class="toggle-row">
+        <span>Light</span>
+        <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="button" tabindex="0" aria-label="Toggle dark mode"></div>
+        <span>Dark</span>
+      </div>
+      <div class="toggle-row">
+        <span>Gradient</span>
+        <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="button" tabindex="0" aria-label="Toggle monochrome"></div>
+        <span>Mono</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- Variation A: Bold Weight -->
+    <!-- 
+      FLAT-TOP HEXAGON with radius r (center to vertex):
+      - Width (point to point horizontally) = 2r
+      - Height (flat edge to flat edge) = r * √3
+      
+      Vertices from center (cx, cy), starting top-right, going clockwise:
+        (cx + r,     cy)           - right
+        (cx + r/2,   cy + r*√3/2)  - bottom-right  
+        (cx - r/2,   cy + r*√3/2)  - bottom-left
+        (cx - r,     cy)           - left
+        (cx - r/2,   cy - r*√3/2)  - top-left
+        (cx + r/2,   cy - r*√3/2)  - top-right
+      
+      Using r = 10:
+      - Width = 20, Height = 17.32
+      - half-height = 8.66
+      
+      Centers on equilateral triangle with side s = 24:
+      - Triangle height = 24 * √3/2 = 20.78
+      - Top center: (width/2, padding + 8.66)
+      - Bottom-left: (padding + 10, padding + 8.66 + 20.78)
+      - Bottom-right: (padding + 10 + 24, padding + 8.66 + 20.78)
+      
+      Content bounds:
+      - Width = 24 + 20 = 44 (centers span 24, plus r on each side)
+      - Height = 20.78 + 17.32 = 38.1
+      
+      For 1:1 with padding=2 for stroke:
+      - Use 48x48 viewBox
+      - Horizontal offset = (48 - 44) / 2 = 2
+      - Vertical offset = (48 - 38.1) / 2 = 4.95
+      
+      Centers:
+      - Top: (24, 4.95 + 8.66) = (24, 13.61)
+      - Bottom-left: (2 + 10, 4.95 + 8.66 + 20.78) = (12, 34.39)
+      - Bottom-right: (2 + 10 + 24, 34.39) = (36, 34.39)
+    -->
+    <div class="card">
+      <span class="variation-number">A</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradA" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Top: center (24, 13.61), r=10 -->
+          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Bottom-left: center (12, 34.39) -->
+          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Bottom-right: center (36, 34.39) -->
+          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="none" stroke="var(--mono-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="var(--mono-mid)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="var(--mono-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Bold Hexagons</h3>
+      <p>Three hexagons with bold strokes representing structural stability and strength.</p>
+    </div>
+
+    <!-- Variation B: Solid Gradient -->
+    <div class="card">
+      <span class="variation-number">B</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradBa" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="100%" style="stop-color:#6B9CF4"/>
+            </linearGradient>
+            <linearGradient id="gradBb" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B6BCF"/>
+              <stop offset="100%" style="stop-color:#9B72CF"/>
+            </linearGradient>
+            <linearGradient id="gradBc" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#F28B82"/>
+              <stop offset="100%" style="stop-color:#F4A59F"/>
+            </linearGradient>
+          </defs>
+          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="url(#gradBa)"/>
+          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="url(#gradBb)"/>
+          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="url(#gradBc)"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="var(--mono-light)"/>
+          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="var(--mono-mid)"/>
+          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="var(--mono-dark)"/>
+        </svg>
+      </div>
+      <h3>Gradient Solids</h3>
+      <p>Each hexagon represents a domain: Structure (blue), Analysis (purple), Intelligence (coral).</p>
+    </div>
+
+    <!-- Variation C: Focal Point -->
+    <div class="card">
+      <span class="variation-number">C</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradC" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="url(#gradC)"/>
+          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="url(#gradC)" stroke-width="2"/>
+          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="url(#gradC)" stroke-width="2"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="var(--mono-light)"/>
+          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="var(--mono-mid)" stroke-width="2"/>
+          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="var(--mono-dark)" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Focal Point</h3>
+      <p>Central intelligence hub with structural foundation. Emphasizes AI-driven analysis.</p>
+    </div>
+
+    <!-- Variation D: Conv Kernel - 3x3 hex grid -->
+    <!-- 
+      3x3 grid with hex radius r=6, centers spaced s=14 apart (both directions)
+      Hex width = 12, height = 10.39
+      
+      Grid spans: 2*14 = 28 in each direction for centers
+      Total bounds: 28 + 12 = 40 width, 28 + 10.39 = 38.39 height
+      
+      Use 44x44 viewBox (padding for stroke + arrow)
+      Horizontal offset = (44 - 40) / 2 = 2
+      Vertical offset = 2 (leave room for arrow at bottom)
+      
+      Row 1 centers Y = 2 + 5.2 = 7.2
+      Row 2 centers Y = 7.2 + 14 = 21.2  
+      Row 3 centers Y = 21.2 + 14 = 35.2
+      
+      Col centers X = 8, 22, 36
+    -->
+    <div class="card">
+      <span class="variation-number">D</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradD" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Row 1 -->
+          <polygon points="14,7.2 11,12.4 5,12.4 2,7.2 5,2 11,2" fill="none" stroke="#4285F4" stroke-width="1"/>
+          <polygon points="28,7.2 25,12.4 19,12.4 16,7.2 19,2 25,2" fill="none" stroke="#5B7AE8" stroke-width="1"/>
+          <polygon points="42,7.2 39,12.4 33,12.4 30,7.2 33,2 39,2" fill="none" stroke="#7B72CF" stroke-width="1"/>
+          <!-- Row 2 -->
+          <polygon points="14,21.2 11,26.4 5,26.4 2,21.2 5,16 11,16" fill="none" stroke="#5B7AE8" stroke-width="1"/>
+          <polygon points="28,21.2 25,26.4 19,26.4 16,21.2 19,16 25,16" fill="url(#gradD)" stroke="url(#gradD)" stroke-width="1.2"/>
+          <polygon points="42,21.2 39,26.4 33,26.4 30,21.2 33,16 39,16" fill="none" stroke="#B87A95" stroke-width="1"/>
+          <!-- Row 3 -->
+          <polygon points="14,35.2 11,40.4 5,40.4 2,35.2 5,30 11,30" fill="none" stroke="#9B72CF" stroke-width="1"/>
+          <polygon points="28,35.2 25,40.4 19,40.4 16,35.2 19,30 25,30" fill="none" stroke="#C87F8A" stroke-width="1"/>
+          <polygon points="42,35.2 39,40.4 33,40.4 30,35.2 33,30 39,30" fill="none" stroke="#F28B82" stroke-width="1"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <!-- Row 1 -->
+          <polygon points="14,7.2 11,12.4 5,12.4 2,7.2 5,2 11,2" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="28,7.2 25,12.4 19,12.4 16,7.2 19,2 25,2" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="42,7.2 39,12.4 33,12.4 30,7.2 33,2 39,2" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <!-- Row 2 -->
+          <polygon points="14,21.2 11,26.4 5,26.4 2,21.2 5,16 11,16" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="28,21.2 25,26.4 19,26.4 16,21.2 19,16 25,16" fill="var(--mono-light)" stroke="var(--mono-light)" stroke-width="1.2"/>
+          <polygon points="42,21.2 39,26.4 33,26.4 30,21.2 33,16 39,16" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <!-- Row 3 -->
+          <polygon points="14,35.2 11,40.4 5,40.4 2,35.2 5,30 11,30" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <polygon points="28,35.2 25,40.4 19,40.4 16,35.2 19,30 25,30" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
+          <polygon points="42,35.2 39,40.4 33,40.4 30,35.2 33,30 39,30" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
+        </svg>
+      </div>
+      <h3>Neural Kernel</h3>
+      <p>Convolutional kernel grid representing AI/ML analysis of structural data.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Structural Analysis Intelligence</p>
+  </footer>
+
+  <script>
+    // Check for saved preferences or defaults
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedColor = localStorage.getItem('color') || 'gradient';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.documentElement.setAttribute('data-color', savedColor);
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    function toggleColor() {
+      const currentColor = document.documentElement.getAttribute('data-color');
+      const newColor = currentColor === 'mono' ? 'gradient' : 'mono';
+      document.documentElement.setAttribute('data-color', newColor);
+      localStorage.setItem('color', newColor);
+    }
+
+    // Handle keyboard accessibility for toggles
+    document.querySelector('.theme-toggle').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTheme();
+      }
+    });
+
+    document.querySelector('.mono-toggle').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleColor();
+      }
+    });
+  </script>
+</body>
+</html>

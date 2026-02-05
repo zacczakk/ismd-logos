@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAI Logo Variations - Structural Analysis Intelligence</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #4285F4, #9B72CF, #F28B82);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 1.1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .logo-container {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container svg {
+      max-width: 120px;
+      max-height: 120px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .variation-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #4285F4, #9B72CF);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Structural Analysis Intelligence</h1>
+    <p class="subtitle">Logo Design Variations - 3-Hexagon Cluster Concept</p>
+    <a href="node-graphs.html" style="display: inline-block; margin-top: 20px; color: #4285F4; text-decoration: none; font-size: 0.9rem; opacity: 0.8; transition: opacity 0.3s ease;">View Node Graph Structures &rarr;</a>
+  </header>
+
+  <div class="grid">
+    
+    <!-- Variation 1: Classic Triangle Cluster -->
+    <div class="card">
+      <span class="variation-number">01</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Top hexagon -->
+          <polygon points="50,10 62,18 62,34 50,42 38,34 38,18" fill="none" stroke="url(#grad1)" stroke-width="2.5"/>
+          <!-- Bottom left hexagon -->
+          <polygon points="35,40 47,48 47,64 35,72 23,64 23,48" fill="none" stroke="url(#grad1)" stroke-width="2.5"/>
+          <!-- Bottom right hexagon -->
+          <polygon points="65,40 77,48 77,64 65,72 53,64 53,48" fill="none" stroke="url(#grad1)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Classic Triangle</h3>
+      <p>Three separated hexagons in pyramidal arrangement. Clean and balanced.</p>
+    </div>
+
+    <!-- Variation 2: Connected Cluster -->
+    <div class="card">
+      <span class="variation-number">02</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Connected hexagons sharing edges -->
+          <path d="M50,15 L62,23 L62,39 L50,47 L38,39 L38,23 Z
+                   M38,39 L38,55 L26,63 L14,55 L14,39 L26,31 L38,39
+                   M62,39 L74,31 L86,39 L86,55 L74,63 L62,55 Z" 
+                fill="none" stroke="url(#grad2)" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Connected Flow</h3>
+      <p>Hexagons sharing edges, creating unified structure.</p>
+    </div>
+
+    <!-- Variation 3: With Neural Nodes -->
+    <div class="card">
+      <span class="variation-number">03</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Hexagons -->
+          <polygon points="50,12 61,19 61,33 50,40 39,33 39,19" fill="none" stroke="url(#grad3)" stroke-width="2"/>
+          <polygon points="35,42 46,49 46,63 35,70 24,63 24,49" fill="none" stroke="url(#grad3)" stroke-width="2"/>
+          <polygon points="65,42 76,49 76,63 65,70 54,63 54,49" fill="none" stroke="url(#grad3)" stroke-width="2"/>
+          <!-- Neural nodes -->
+          <circle cx="50" cy="12" r="3" fill="#4285F4"/>
+          <circle cx="24" cy="70" r="3" fill="#9B72CF"/>
+          <circle cx="76" cy="70" r="3" fill="#F28B82"/>
+          <!-- Connection lines -->
+          <line x1="50" y1="12" x2="24" y2="70" stroke="url(#grad3)" stroke-width="1" opacity="0.4"/>
+          <line x1="50" y1="12" x2="76" y2="70" stroke="url(#grad3)" stroke-width="1" opacity="0.4"/>
+          <line x1="24" y1="70" x2="76" y2="70" stroke="url(#grad3)" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Neural Nodes</h3>
+      <p>Hexagons with connected neural network nodes at vertices.</p>
+    </div>
+
+    <!-- Variation 4: Thick Strokes -->
+    <div class="card">
+      <span class="variation-number">04</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad4" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,12 63,20 63,36 50,44 37,36 37,20" fill="none" stroke="url(#grad4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="34,42 47,50 47,66 34,74 21,66 21,50" fill="none" stroke="url(#grad4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="66,42 79,50 79,66 66,74 53,66 53,50" fill="none" stroke="url(#grad4)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Bold Weight</h3>
+      <p>Thicker strokes for stronger visual presence and impact.</p>
+    </div>
+
+    <!-- Variation 5: Gradient Fill -->
+    <div class="card">
+      <span class="variation-number">05</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad5a" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="100%" style="stop-color:#6B9CF4"/>
+            </linearGradient>
+            <linearGradient id="grad5b" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B6BCF"/>
+              <stop offset="100%" style="stop-color:#9B72CF"/>
+            </linearGradient>
+            <linearGradient id="grad5c" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#F28B82"/>
+              <stop offset="100%" style="stop-color:#F4A59F"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,12 62,19 62,33 50,40 38,33 38,19" fill="url(#grad5a)" opacity="0.9"/>
+          <polygon points="35,42 47,49 47,63 35,70 23,63 23,49" fill="url(#grad5b)" opacity="0.9"/>
+          <polygon points="65,42 77,49 77,63 65,70 53,63 53,49" fill="url(#grad5c)" opacity="0.9"/>
+        </svg>
+      </div>
+      <h3>Solid Gradient</h3>
+      <p>Each hexagon filled with part of the gradient spectrum.</p>
+    </div>
+
+    <!-- Variation 6: Outline + Fill Hybrid -->
+    <div class="card">
+      <span class="variation-number">06</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad6" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Filled center, outlined sides -->
+          <polygon points="50,12 62,19 62,33 50,40 38,33 38,19" fill="url(#grad6)"/>
+          <polygon points="35,42 47,49 47,63 35,70 23,63 23,49" fill="none" stroke="url(#grad6)" stroke-width="2.5"/>
+          <polygon points="65,42 77,49 77,63 65,70 53,63 53,49" fill="none" stroke="url(#grad6)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Focal Point</h3>
+      <p>Filled top hexagon draws attention, outlined base provides support.</p>
+    </div>
+
+    <!-- Variation 7: Horizontal Layout -->
+    <div class="card">
+      <span class="variation-number">07</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 140 60" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad7" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <polygon points="25,8 37,15 37,29 25,36 13,29 13,15" fill="none" stroke="url(#grad7)" stroke-width="2.5"/>
+          <polygon points="55,8 67,15 67,29 55,36 43,29 43,15" fill="none" stroke="url(#grad7)" stroke-width="2.5"/>
+          <polygon points="85,8 97,15 97,29 85,36 73,29 73,15" fill="none" stroke="url(#grad7)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Horizontal Row</h3>
+      <p>Three hexagons in a row. Great for wide headers and banners.</p>
+    </div>
+
+    <!-- Variation 8: Stacked/Overlapping -->
+    <div class="card">
+      <span class="variation-number">08</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad8" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Overlapping hexagons -->
+          <polygon points="40,20 52,27 52,41 40,48 28,41 28,27" fill="none" stroke="#4285F4" stroke-width="2.5"/>
+          <polygon points="50,35 62,42 62,56 50,63 38,56 38,42" fill="none" stroke="#9B72CF" stroke-width="2.5"/>
+          <polygon points="60,50 72,57 72,71 60,78 48,71 48,57" fill="none" stroke="#F28B82" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Cascading Layers</h3>
+      <p>Staggered overlapping hexagons showing depth and progression.</p>
+    </div>
+
+    <!-- Variation 9: Minimal Thin -->
+    <div class="card">
+      <span class="variation-number">09</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad9" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,10 64,19 64,37 50,46 36,37 36,19" fill="none" stroke="url(#grad9)" stroke-width="1.2"/>
+          <polygon points="32,44 46,53 46,71 32,80 18,71 18,53" fill="none" stroke="url(#grad9)" stroke-width="1.2"/>
+          <polygon points="68,44 82,53 82,71 68,80 54,71 54,53" fill="none" stroke="url(#grad9)" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>Ultra Minimal</h3>
+      <p>Thin hairline strokes for elegant, refined aesthetic.</p>
+    </div>
+
+    <!-- Variation 10: With Inner Detail -->
+    <div class="card">
+      <span class="variation-number">10</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad10" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Outer hexagons -->
+          <polygon points="50,10 63,18 63,34 50,42 37,34 37,18" fill="none" stroke="url(#grad10)" stroke-width="2"/>
+          <polygon points="33,42 46,50 46,66 33,74 20,66 20,50" fill="none" stroke="url(#grad10)" stroke-width="2"/>
+          <polygon points="67,42 80,50 80,66 67,74 54,66 54,50" fill="none" stroke="url(#grad10)" stroke-width="2"/>
+          <!-- Inner hexagons -->
+          <polygon points="50,17 58,22 58,32 50,37 42,32 42,22" fill="none" stroke="url(#grad10)" stroke-width="1" opacity="0.5"/>
+          <polygon points="33,49 41,54 41,64 33,69 25,64 25,54" fill="none" stroke="url(#grad10)" stroke-width="1" opacity="0.5"/>
+          <polygon points="67,49 75,54 75,64 67,69 59,64 59,54" fill="none" stroke="url(#grad10)" stroke-width="1" opacity="0.5"/>
+          <!-- Center dots -->
+          <circle cx="50" cy="27" r="2" fill="url(#grad10)"/>
+          <circle cx="33" cy="59" r="2" fill="url(#grad10)"/>
+          <circle cx="67" cy="59" r="2" fill="url(#grad10)"/>
+        </svg>
+      </div>
+      <h3>Nested Detail</h3>
+      <p>Inner hexagons and center nodes for structural depth.</p>
+    </div>
+
+  </div>
+
+  <!-- Section Divider -->
+  <header style="margin-top: 80px; margin-bottom: 60px;">
+    <h1>Neural Network Variations</h1>
+    <p class="subtitle">Emphasizing AI & Neural Connections with Structural Elements</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- Variation 11: Full Neural Mesh -->
+    <div class="card">
+      <span class="variation-number">11</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad11" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Neural connection lines (background layer) -->
+          <line x1="50" y1="15" x2="25" y2="50" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="50" y1="15" x2="75" y2="50" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="50" y1="15" x2="50" y2="50" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="25" y1="50" x2="50" y2="85" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="75" y1="50" x2="50" y2="85" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="50" y1="50" x2="50" y2="85" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="25" y1="50" x2="75" y2="50" stroke="url(#grad11)" stroke-width="1.5" opacity="0.6"/>
+          <!-- Hexagonal nodes -->
+          <polygon points="50,8 57,12 57,20 50,24 43,20 43,12" fill="none" stroke="url(#grad11)" stroke-width="2"/>
+          <polygon points="25,43 32,47 32,55 25,59 18,55 18,47" fill="none" stroke="url(#grad11)" stroke-width="2"/>
+          <polygon points="50,43 57,47 57,55 50,59 43,55 43,47" fill="none" stroke="url(#grad11)" stroke-width="2"/>
+          <polygon points="75,43 82,47 82,55 75,59 68,55 68,47" fill="none" stroke="url(#grad11)" stroke-width="2"/>
+          <polygon points="50,78 57,82 57,90 50,94 43,90 43,82" fill="none" stroke="url(#grad11)" stroke-width="2"/>
+          <!-- Node centers -->
+          <circle cx="50" cy="16" r="2" fill="#4285F4"/>
+          <circle cx="25" cy="51" r="2" fill="#7B6BCF"/>
+          <circle cx="50" cy="51" r="2" fill="#9B72CF"/>
+          <circle cx="75" cy="51" r="2" fill="#C87F8A"/>
+          <circle cx="50" cy="86" r="2" fill="#F28B82"/>
+        </svg>
+      </div>
+      <h3>Neural Mesh Network</h3>
+      <p>Multi-layer neural network with hexagonal nodes and full connectivity.</p>
+    </div>
+
+    <!-- Variation 12: Brain-Hex Fusion -->
+    <div class="card">
+      <span class="variation-number">12</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad12" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Outer brain-like boundary made of hexagons -->
+          <polygon points="50,5 60,11 60,23 50,29 40,23 40,11" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <polygon points="30,20 40,26 40,38 30,44 20,38 20,26" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <polygon points="70,20 80,26 80,38 70,44 60,38 60,26" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <polygon points="25,45 35,51 35,63 25,69 15,63 15,51" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <polygon points="75,45 85,51 85,63 75,69 65,63 65,51" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <polygon points="40,65 50,71 50,83 40,89 30,83 30,71" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <polygon points="60,65 70,71 70,83 60,89 50,83 50,71" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <!-- Central neural hub -->
+          <circle cx="50" cy="50" r="8" fill="none" stroke="url(#grad12)" stroke-width="2"/>
+          <circle cx="50" cy="50" r="3" fill="url(#grad12)"/>
+          <!-- Neural connections to center -->
+          <line x1="50" y1="29" x2="50" y2="42" stroke="url(#grad12)" stroke-width="1" opacity="0.5"/>
+          <line x1="35" y1="38" x2="44" y2="45" stroke="url(#grad12)" stroke-width="1" opacity="0.5"/>
+          <line x1="65" y1="38" x2="56" y2="45" stroke="url(#grad12)" stroke-width="1" opacity="0.5"/>
+          <line x1="35" y1="63" x2="44" y2="55" stroke="url(#grad12)" stroke-width="1" opacity="0.5"/>
+          <line x1="65" y1="63" x2="56" y2="55" stroke="url(#grad12)" stroke-width="1" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Neural Cortex</h3>
+      <p>Brain-shaped arrangement of hexagons with central processing hub.</p>
+    </div>
+
+    <!-- Variation 13: Synapse Connections -->
+    <div class="card">
+      <span class="variation-number">13</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad13" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Main hexagons -->
+          <polygon points="50,10 62,17 62,31 50,38 38,31 38,17" fill="none" stroke="url(#grad13)" stroke-width="2.5"/>
+          <polygon points="30,45 42,52 42,66 30,73 18,66 18,52" fill="none" stroke="url(#grad13)" stroke-width="2.5"/>
+          <polygon points="70,45 82,52 82,66 70,73 58,66 58,52" fill="none" stroke="url(#grad13)" stroke-width="2.5"/>
+          <!-- Synapse connection paths (curved) -->
+          <path d="M50,38 Q40,42 30,45" fill="none" stroke="url(#grad13)" stroke-width="2" opacity="0.8"/>
+          <path d="M50,38 Q60,42 70,45" fill="none" stroke="url(#grad13)" stroke-width="2" opacity="0.8"/>
+          <path d="M42,66 Q50,75 58,66" fill="none" stroke="url(#grad13)" stroke-width="2" opacity="0.8"/>
+          <!-- Signal dots along synapses -->
+          <circle cx="40" cy="41" r="2" fill="#4285F4"/>
+          <circle cx="60" cy="41" r="2" fill="#9B72CF"/>
+          <circle cx="50" cy="72" r="2" fill="#F28B82"/>
+          <!-- Pulse rings -->
+          <circle cx="50" cy="24" r="5" fill="none" stroke="url(#grad13)" stroke-width="1" opacity="0.3"/>
+          <circle cx="30" cy="59" r="5" fill="none" stroke="url(#grad13)" stroke-width="1" opacity="0.3"/>
+          <circle cx="70" cy="59" r="5" fill="none" stroke="url(#grad13)" stroke-width="1" opacity="0.3"/>
+        </svg>
+      </div>
+      <h3>Synapse Flow</h3>
+      <p>Curved synaptic connections with signal pulses between nodes.</p>
+    </div>
+
+    <!-- Variation 14: Deep Learning Layers -->
+    <div class="card">
+      <span class="variation-number">14</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad14" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Input layer (left) -->
+          <polygon points="20,20 28,25 28,35 20,40 12,35 12,25" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="20,45 28,50 28,60 20,65 12,60 12,50" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="20,70 28,75 28,85 20,90 12,85 12,75" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <!-- Hidden layer (middle) -->
+          <polygon points="60,30 68,35 68,45 60,50 52,45 52,35" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <polygon points="60,55 68,60 68,70 60,75 52,70 52,60" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <!-- Output layer (right) -->
+          <polygon points="100,42 108,47 108,57 100,62 92,57 92,47" fill="none" stroke="#F28B82" stroke-width="2"/>
+          <!-- Connections -->
+          <line x1="28" y1="30" x2="52" y2="40" stroke="url(#grad14)" stroke-width="1" opacity="0.4"/>
+          <line x1="28" y1="55" x2="52" y2="42" stroke="url(#grad14)" stroke-width="1" opacity="0.4"/>
+          <line x1="28" y1="55" x2="52" y2="65" stroke="url(#grad14)" stroke-width="1" opacity="0.4"/>
+          <line x1="28" y1="80" x2="52" y2="65" stroke="url(#grad14)" stroke-width="1" opacity="0.4"/>
+          <line x1="68" y1="42" x2="92" y2="52" stroke="url(#grad14)" stroke-width="1" opacity="0.4"/>
+          <line x1="68" y1="65" x2="92" y2="52" stroke="url(#grad14)" stroke-width="1" opacity="0.4"/>
+          <!-- Node centers -->
+          <circle cx="20" cy="30" r="2" fill="#4285F4"/>
+          <circle cx="20" cy="55" r="2" fill="#4285F4"/>
+          <circle cx="20" cy="80" r="2" fill="#4285F4"/>
+          <circle cx="60" cy="42" r="2" fill="#9B72CF"/>
+          <circle cx="60" cy="65" r="2" fill="#9B72CF"/>
+          <circle cx="100" cy="52" r="2" fill="#F28B82"/>
+        </svg>
+      </div>
+      <h3>Deep Layers</h3>
+      <p>Classic neural network layer architecture with hexagonal neurons.</p>
+    </div>
+
+    <!-- Variation 15: Graph Neural Network -->
+    <div class="card">
+      <span class="variation-number">15</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad15" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- All-to-all connections first (background) -->
+          <line x1="50" y1="18" x2="22" y2="40" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="50" y1="18" x2="78" y2="40" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="50" y1="18" x2="22" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="50" y1="18" x2="78" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="22" y1="40" x2="78" y2="40" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="22" y1="40" x2="78" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="78" y1="40" x2="22" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="22" y1="40" x2="22" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="78" y1="40" x2="78" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="22" y1="70" x2="78" y2="70" stroke="url(#grad15)" stroke-width="1.2" opacity="0.5"/>
+          <!-- Hexagonal nodes -->
+          <polygon points="50,10 58,15 58,23 50,28 42,23 42,15" fill="#0f0f1a" stroke="url(#grad15)" stroke-width="2.5"/>
+          <polygon points="22,32 30,37 30,45 22,50 14,45 14,37" fill="#0f0f1a" stroke="url(#grad15)" stroke-width="2.5"/>
+          <polygon points="78,32 86,37 86,45 78,50 70,45 70,37" fill="#0f0f1a" stroke="url(#grad15)" stroke-width="2.5"/>
+          <polygon points="22,62 30,67 30,75 22,80 14,75 14,67" fill="#0f0f1a" stroke="url(#grad15)" stroke-width="2.5"/>
+          <polygon points="78,62 86,67 86,75 78,80 70,75 70,67" fill="#0f0f1a" stroke="url(#grad15)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Graph Network</h3>
+      <p>Fully connected graph neural network with 5 hexagonal nodes.</p>
+    </div>
+
+    <!-- Variation 16: Attention Mechanism -->
+    <div class="card">
+      <span class="variation-number">16</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad16" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+            <filter id="glow16">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Central attention hexagon (glowing) -->
+          <polygon points="50,30 62,37 62,51 50,58 38,51 38,37" fill="none" stroke="url(#grad16)" stroke-width="3" filter="url(#glow16)"/>
+          <!-- Surrounding query hexagons -->
+          <polygon points="25,15 33,19 33,27 25,31 17,27 17,19" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="75,15 83,19 83,27 75,31 67,27 67,19" fill="none" stroke="#6B7CCF" stroke-width="1.5"/>
+          <polygon points="15,50 23,54 23,62 15,66 7,62 7,54" fill="none" stroke="#9B72CF" stroke-width="1.5"/>
+          <polygon points="85,50 93,54 93,62 85,66 77,62 77,54" fill="none" stroke="#C87F8A" stroke-width="1.5"/>
+          <polygon points="25,75 33,79 33,87 25,91 17,87 17,79" fill="none" stroke="#E8858A" stroke-width="1.5"/>
+          <polygon points="75,75 83,79 83,87 75,91 67,87 67,79" fill="none" stroke="#F28B82" stroke-width="1.5"/>
+          <!-- Attention arrows pointing to center -->
+          <line x1="33" y1="27" x2="40" y2="35" stroke="#4285F4" stroke-width="1.5" opacity="0.7"/>
+          <line x1="67" y1="27" x2="60" y2="35" stroke="#6B7CCF" stroke-width="1.5" opacity="0.7"/>
+          <line x1="23" y1="54" x2="38" y2="48" stroke="#9B72CF" stroke-width="1.5" opacity="0.7"/>
+          <line x1="77" y1="54" x2="62" y2="48" stroke="#C87F8A" stroke-width="1.5" opacity="0.7"/>
+          <line x1="33" y1="79" x2="42" y2="56" stroke="#E8858A" stroke-width="1.5" opacity="0.7"/>
+          <line x1="67" y1="79" x2="58" y2="56" stroke="#F28B82" stroke-width="1.5" opacity="0.7"/>
+        </svg>
+      </div>
+      <h3>Attention Focus</h3>
+      <p>Central attention node receiving weighted inputs from surrounding nodes.</p>
+    </div>
+
+    <!-- Variation 17: Recurrent Loop -->
+    <div class="card">
+      <span class="variation-number">17</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad17" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+            <marker id="arrowhead17" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+              <polygon points="0 0, 6 2, 0 4" fill="#9B72CF"/>
+            </marker>
+          </defs>
+          <!-- Three hexagons in triangle -->
+          <polygon points="50,12 62,19 62,33 50,40 38,33 38,19" fill="none" stroke="url(#grad17)" stroke-width="2.5"/>
+          <polygon points="30,50 42,57 42,71 30,78 18,71 18,57" fill="none" stroke="url(#grad17)" stroke-width="2.5"/>
+          <polygon points="70,50 82,57 82,71 70,78 58,71 58,57" fill="none" stroke="url(#grad17)" stroke-width="2.5"/>
+          <!-- Recurrent loop arrows -->
+          <path d="M62,26 Q75,30 82,50" fill="none" stroke="url(#grad17)" stroke-width="1.5" marker-end="url(#arrowhead17)"/>
+          <path d="M58,71 Q50,85 42,71" fill="none" stroke="url(#grad17)" stroke-width="1.5" marker-end="url(#arrowhead17)"/>
+          <path d="M18,57 Q10,35 38,26" fill="none" stroke="url(#grad17)" stroke-width="1.5" marker-end="url(#arrowhead17)"/>
+          <!-- Self-loop on top hexagon -->
+          <path d="M45,14 Q50,2 55,14" fill="none" stroke="#F28B82" stroke-width="1.5"/>
+          <circle cx="50" cy="5" r="2" fill="#F28B82"/>
+        </svg>
+      </div>
+      <h3>Recurrent Flow</h3>
+      <p>Circular data flow representing recurrent neural network architecture.</p>
+    </div>
+
+    <!-- Variation 18: Transformer Style -->
+    <div class="card">
+      <span class="variation-number">18</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad18" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Stacked transformer blocks -->
+          <rect x="25" y="10" width="50" height="20" rx="3" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <rect x="25" y="38" width="50" height="20" rx="3" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <rect x="25" y="66" width="50" height="20" rx="3" fill="none" stroke="#F28B82" stroke-width="2"/>
+          <!-- Hexagonal attention heads inside -->
+          <polygon points="38,15 43,18 43,24 38,27 33,24 33,18" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="50,15 55,18 55,24 50,27 45,24 45,18" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="62,15 67,18 67,24 62,27 57,24 57,18" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="38,43 43,46 43,52 38,55 33,52 33,46" fill="none" stroke="#9B72CF" stroke-width="1.5"/>
+          <polygon points="50,43 55,46 55,52 50,55 45,52 45,46" fill="none" stroke="#9B72CF" stroke-width="1.5"/>
+          <polygon points="62,43 67,46 67,52 62,55 57,52 57,46" fill="none" stroke="#9B72CF" stroke-width="1.5"/>
+          <polygon points="50,71 55,74 55,80 50,83 45,80 45,74" fill="none" stroke="#F28B82" stroke-width="1.5"/>
+          <!-- Skip connections -->
+          <path d="M20,20 L20,76 L25,76" fill="none" stroke="url(#grad18)" stroke-width="1" opacity="0.5" stroke-dasharray="3,2"/>
+          <path d="M80,20 L80,76 L75,76" fill="none" stroke="url(#grad18)" stroke-width="1" opacity="0.5" stroke-dasharray="3,2"/>
+          <!-- Vertical flow lines -->
+          <line x1="50" y1="30" x2="50" y2="38" stroke="url(#grad18)" stroke-width="1.5"/>
+          <line x1="50" y1="58" x2="50" y2="66" stroke="url(#grad18)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3>Transformer Stack</h3>
+      <p>Stacked attention blocks with multi-head hexagonal neurons.</p>
+    </div>
+
+    <!-- Variation 19: Convolutional Kernel -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">19</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad19" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- 3x3 hexagonal kernel grid -->
+          <polygon points="30,15 37,19 37,27 30,31 23,27 23,19" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="50,15 57,19 57,27 50,31 43,27 43,19" fill="none" stroke="#5B7AE8" stroke-width="1.5"/>
+          <polygon points="70,15 77,19 77,27 70,31 63,27 63,19" fill="none" stroke="#7B72CF" stroke-width="1.5"/>
+          <polygon points="30,38 37,42 37,50 30,54 23,50 23,42" fill="none" stroke="#5B7AE8" stroke-width="1.5"/>
+          <polygon points="50,38 57,42 57,50 50,54 43,50 43,42" fill="url(#grad19)" stroke="url(#grad19)" stroke-width="2"/>
+          <polygon points="70,38 77,42 77,50 70,54 63,50 63,42" fill="none" stroke="#B87A95" stroke-width="1.5"/>
+          <polygon points="30,61 37,65 37,73 30,77 23,73 23,65" fill="none" stroke="#9B72CF" stroke-width="1.5"/>
+          <polygon points="50,61 57,65 57,73 50,77 43,73 43,65" fill="none" stroke="#C87F8A" stroke-width="1.5"/>
+          <polygon points="70,61 77,65 77,73 70,77 63,73 63,65" fill="none" stroke="#F28B82" stroke-width="1.5"/>
+          <!-- Kernel scan indicator -->
+          <rect x="20" y="35" width="60" height="24" fill="none" stroke="url(#grad19)" stroke-width="1" stroke-dasharray="4,2" opacity="0.6"/>
+          <!-- Output arrow -->
+          <line x1="50" y1="82" x2="50" y2="95" stroke="url(#grad19)" stroke-width="2"/>
+          <polygon points="50,98 45,92 55,92" fill="url(#grad19)"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Conv Kernel</h3>
+      <p style="color: #666;">Convolutional kernel scanning over hexagonal feature grid.</p>
+    </div>
+
+    <!-- Variation 20: Sparse Network -->
+    <div class="card">
+      <span class="variation-number">20</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad20" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Sparse connections (selective paths) -->
+          <line x1="20" y1="25" x2="40" y2="45" stroke="url(#grad20)" stroke-width="2" opacity="0.8"/>
+          <line x1="50" y1="15" x2="50" y2="40" stroke="url(#grad20)" stroke-width="2" opacity="0.8"/>
+          <line x1="80" y1="25" x2="60" y2="45" stroke="url(#grad20)" stroke-width="2" opacity="0.8"/>
+          <line x1="40" y1="55" x2="30" y2="75" stroke="url(#grad20)" stroke-width="2" opacity="0.8"/>
+          <line x1="60" y1="55" x2="70" y2="75" stroke="url(#grad20)" stroke-width="2" opacity="0.8"/>
+          <line x1="50" y1="60" x2="50" y2="85" stroke="url(#grad20)" stroke-width="2" opacity="0.8"/>
+          <!-- Pruned connections (dashed/faded) -->
+          <line x1="20" y1="25" x2="60" y2="45" stroke="#666" stroke-width="1" opacity="0.2" stroke-dasharray="2,3"/>
+          <line x1="80" y1="25" x2="40" y2="45" stroke="#666" stroke-width="1" opacity="0.2" stroke-dasharray="2,3"/>
+          <line x1="40" y1="55" x2="70" y2="75" stroke="#666" stroke-width="1" opacity="0.2" stroke-dasharray="2,3"/>
+          <!-- Active hexagonal nodes -->
+          <polygon points="20,18 27,22 27,30 20,34 13,30 13,22" fill="none" stroke="#4285F4" stroke-width="2.5"/>
+          <polygon points="50,8 57,12 57,20 50,24 43,20 43,12" fill="none" stroke="#6B7CCF" stroke-width="2.5"/>
+          <polygon points="80,18 87,22 87,30 80,34 73,30 73,22" fill="none" stroke="#9B72CF" stroke-width="2.5"/>
+          <polygon points="40,40 47,44 47,52 40,56 33,52 33,44" fill="none" stroke="#8B6BCF" stroke-width="2.5"/>
+          <polygon points="60,40 67,44 67,52 60,56 53,52 53,44" fill="none" stroke="#B87A95" stroke-width="2.5"/>
+          <polygon points="30,70 37,74 37,82 30,86 23,82 23,74" fill="none" stroke="#D8878A" stroke-width="2.5"/>
+          <polygon points="50,78 57,82 57,90 50,94 43,90 43,82" fill="none" stroke="#E8888A" stroke-width="2.5"/>
+          <polygon points="70,70 77,74 77,82 70,86 63,82 63,74" fill="none" stroke="#F28B82" stroke-width="2.5"/>
+          <!-- Active node indicators -->
+          <circle cx="50" cy="16" r="2" fill="#6B7CCF"/>
+          <circle cx="40" cy="48" r="2" fill="#8B6BCF"/>
+          <circle cx="60" cy="48" r="2" fill="#B87A95"/>
+          <circle cx="50" cy="86" r="2" fill="#E8888A"/>
+        </svg>
+      </div>
+      <h3>Sparse Network</h3>
+      <p>Pruned neural network showing active vs. inactive connections.</p>
+    </div>
+
+  </div>
+
+  <!-- Section Divider - Convolution Kernel Variations -->
+  <header style="margin-top: 80px; margin-bottom: 60px;">
+    <h1>Convolution Kernel Variations</h1>
+    <p class="subtitle">Expanding on the CNN kernel concept with structural hexagonal elements</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- Variation 21: Minimal 3x3 Kernel -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">21</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad21" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Clean 3x3 grid - minimal -->
+          <polygon points="30,20 38,25 38,35 30,40 22,35 22,25" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="50,20 58,25 58,35 50,40 42,35 42,25" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="70,20 78,25 78,35 70,40 62,35 62,25" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="30,45 38,50 38,60 30,65 22,60 22,50" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="50,45 58,50 58,60 50,65 42,60 42,50" fill="url(#grad21)" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="70,45 78,50 78,60 70,65 62,60 62,50" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="30,70 38,75 38,85 30,90 22,85 22,75" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="50,70 58,75 58,85 50,90 42,85 42,75" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+          <polygon points="70,70 78,75 78,85 70,90 62,85 62,75" fill="none" stroke="url(#grad21)" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Minimal Grid</h3>
+      <p style="color: #666;">Clean 3x3 hexagonal kernel with gradient center activation.</p>
+    </div>
+
+    <!-- Variation 22: Weighted Kernel -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">22</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad22" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Weighted kernel - varying opacities represent weights -->
+          <polygon points="30,20 38,25 38,35 30,40 22,35 22,25" fill="url(#grad22)" opacity="0.2"/>
+          <polygon points="50,20 58,25 58,35 50,40 42,35 42,25" fill="url(#grad22)" opacity="0.5"/>
+          <polygon points="70,20 78,25 78,35 70,40 62,35 62,25" fill="url(#grad22)" opacity="0.2"/>
+          <polygon points="30,45 38,50 38,60 30,65 22,60 22,50" fill="url(#grad22)" opacity="0.5"/>
+          <polygon points="50,45 58,50 58,60 50,65 42,60 42,50" fill="url(#grad22)" opacity="1"/>
+          <polygon points="70,45 78,50 78,60 70,65 62,60 62,50" fill="url(#grad22)" opacity="0.5"/>
+          <polygon points="30,70 38,75 38,85 30,90 22,85 22,75" fill="url(#grad22)" opacity="0.2"/>
+          <polygon points="50,70 58,75 58,85 50,90 42,85 42,75" fill="url(#grad22)" opacity="0.5"/>
+          <polygon points="70,70 78,75 78,85 70,90 62,85 62,75" fill="url(#grad22)" opacity="0.2"/>
+          <!-- Strokes -->
+          <polygon points="30,20 38,25 38,35 30,40 22,35 22,25" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="50,20 58,25 58,35 50,40 42,35 42,25" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="70,20 78,25 78,35 70,40 62,35 62,25" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="30,45 38,50 38,60 30,65 22,60 22,50" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="50,45 58,50 58,60 50,65 42,60 42,50" fill="none" stroke="url(#grad22)" stroke-width="2.5"/>
+          <polygon points="70,45 78,50 78,60 70,65 62,60 62,50" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="30,70 38,75 38,85 30,90 22,85 22,75" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="50,70 58,75 58,85 50,90 42,85 42,75" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+          <polygon points="70,70 78,75 78,85 70,90 62,85 62,75" fill="none" stroke="url(#grad22)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Weighted Kernel</h3>
+      <p style="color: #666;">Gaussian-like weight distribution visualized through opacity.</p>
+    </div>
+
+    <!-- Variation 23: Edge Detection Kernel -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">23</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad23" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Edge detection pattern - corners highlighted -->
+          <polygon points="30,20 38,25 38,35 30,40 22,35 22,25" fill="#4285F4" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="50,20 58,25 58,35 50,40 42,35 42,25" fill="none" stroke="#ccc" stroke-width="1.5"/>
+          <polygon points="70,20 78,25 78,35 70,40 62,35 62,25" fill="#9B72CF" stroke="#9B72CF" stroke-width="2"/>
+          <polygon points="30,45 38,50 38,60 30,65 22,60 22,50" fill="none" stroke="#ccc" stroke-width="1.5"/>
+          <polygon points="50,45 58,50 58,60 50,65 42,60 42,50" fill="none" stroke="url(#grad23)" stroke-width="2.5"/>
+          <polygon points="70,45 78,50 78,60 70,65 62,60 62,50" fill="none" stroke="#ccc" stroke-width="1.5"/>
+          <polygon points="30,70 38,75 38,85 30,90 22,85 22,75" fill="#C87F8A" stroke="#C87F8A" stroke-width="2"/>
+          <polygon points="50,70 58,75 58,85 50,90 42,85 42,75" fill="none" stroke="#ccc" stroke-width="1.5"/>
+          <polygon points="70,70 78,75 78,85 70,90 62,85 62,75" fill="#F28B82" stroke="#F28B82" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Edge Detector</h3>
+      <p style="color: #666;">Corner-activated kernel pattern for edge detection.</p>
+    </div>
+
+    <!-- Variation 24: Sliding Window -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">24</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad24" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Background grid (larger, faded) -->
+          <polygon points="15,15 21,19 21,27 15,31 9,27 9,19" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="30,15 36,19 36,27 30,31 24,27 24,19" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="45,15 51,19 51,27 45,31 39,27 39,19" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="60,15 66,19 66,27 60,31 54,27 54,19" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="75,15 81,19 81,27 75,31 69,27 69,19" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="15,35 21,39 21,47 15,51 9,47 9,39" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="75,35 81,39 81,47 75,51 69,47 69,39" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="15,55 21,59 21,67 15,71 9,67 9,59" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="75,55 81,59 81,67 75,71 69,67 69,59" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="15,75 21,79 21,87 15,91 9,87 9,79" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="30,75 36,79 36,87 30,91 24,87 24,79" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="45,75 51,79 51,87 45,91 39,87 39,79" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="60,75 66,79 66,87 60,91 54,87 54,79" fill="none" stroke="#ddd" stroke-width="1"/>
+          <polygon points="75,75 81,79 81,87 75,91 69,87 69,79" fill="none" stroke="#ddd" stroke-width="1"/>
+          <!-- Active 3x3 window -->
+          <polygon points="30,35 36,39 36,47 30,51 24,47 24,39" fill="none" stroke="url(#grad24)" stroke-width="2"/>
+          <polygon points="45,35 51,39 51,47 45,51 39,47 39,39" fill="none" stroke="url(#grad24)" stroke-width="2"/>
+          <polygon points="60,35 66,39 66,47 60,51 54,47 54,39" fill="none" stroke="url(#grad24)" stroke-width="2"/>
+          <polygon points="30,55 36,59 36,67 30,71 24,67 24,59" fill="none" stroke="url(#grad24)" stroke-width="2"/>
+          <polygon points="45,55 51,59 51,67 45,71 39,67 39,59" fill="url(#grad24)" stroke="url(#grad24)" stroke-width="2"/>
+          <polygon points="60,55 66,59 66,67 60,71 54,67 54,59" fill="none" stroke="url(#grad24)" stroke-width="2"/>
+          <!-- Window frame -->
+          <rect x="22" y="33" width="50" height="42" rx="2" fill="none" stroke="url(#grad24)" stroke-width="2" stroke-dasharray="4,2"/>
+          <!-- Motion arrow -->
+          <path d="M85,53 L95,53" stroke="url(#grad24)" stroke-width="2"/>
+          <polygon points="98,53 92,49 92,57" fill="url(#grad24)"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Sliding Window</h3>
+      <p style="color: #666;">Kernel window scanning across larger feature map.</p>
+    </div>
+
+    <!-- Variation 25: Pooling Operation -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">25</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad25" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- 2x2 input blocks -->
+          <polygon points="25,15 32,19 32,27 25,31 18,27 18,19" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="40,15 47,19 47,27 40,31 33,27 33,19" fill="none" stroke="#5B7AE8" stroke-width="2"/>
+          <polygon points="60,15 67,19 67,27 60,31 53,27 53,19" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <polygon points="75,15 82,19 82,27 75,31 68,27 68,19" fill="none" stroke="#B87A95" stroke-width="2"/>
+          <polygon points="25,35 32,39 32,47 25,51 18,47 18,39" fill="none" stroke="#5B7AE8" stroke-width="2"/>
+          <polygon points="40,35 47,39 47,47 40,51 33,47 33,39" fill="url(#grad25)" stroke="url(#grad25)" stroke-width="2"/>
+          <polygon points="60,35 67,39 67,47 60,51 53,47 53,39" fill="none" stroke="#B87A95" stroke-width="2"/>
+          <polygon points="75,35 82,39 82,47 75,51 68,47 68,39" fill="url(#grad25)" stroke="url(#grad25)" stroke-width="2"/>
+          <!-- Pooling arrows -->
+          <path d="M33,45 L33,60 L40,60" stroke="url(#grad25)" stroke-width="1.5"/>
+          <path d="M68,45 L68,60 L75,60" stroke="url(#grad25)" stroke-width="1.5"/>
+          <!-- Pooled output -->
+          <polygon points="40,65 50,71 50,83 40,89 30,83 30,71" fill="url(#grad25)" stroke="url(#grad25)" stroke-width="2.5"/>
+          <polygon points="75,65 85,71 85,83 75,89 65,83 65,71" fill="url(#grad25)" stroke="url(#grad25)" stroke-width="2.5"/>
+          <!-- Max label -->
+          <text x="40" y="80" font-size="6" fill="white" text-anchor="middle" font-weight="bold">MAX</text>
+          <text x="75" y="80" font-size="6" fill="white" text-anchor="middle" font-weight="bold">MAX</text>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Max Pooling</h3>
+      <p style="color: #666;">2x2 pooling operation reducing spatial dimensions.</p>
+    </div>
+
+    <!-- Variation 26: Multi-Channel Kernel -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">26</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad26" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Back layer (channel 3) -->
+          <polygon points="45,10 51,13 51,19 45,22 39,19 39,13" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="55,10 61,13 61,19 55,22 49,19 49,13" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="65,10 71,13 71,19 65,22 59,19 59,13" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="45,25 51,28 51,34 45,37 39,34 39,28" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="55,25 61,28 61,34 55,37 49,34 49,28" fill="#F28B82" opacity="0.3"/>
+          <polygon points="65,25 71,28 71,34 65,37 59,34 59,28" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="45,40 51,43 51,49 45,52 39,49 39,43" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="55,40 61,43 61,49 55,52 49,49 49,43" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="65,40 71,43 71,49 65,52 59,49 59,43" fill="none" stroke="#F28B82" stroke-width="1.5" opacity="0.6"/>
+          <!-- Middle layer (channel 2) -->
+          <polygon points="35,20 41,23 41,29 35,32 29,29 29,23" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="45,20 51,23 51,29 45,32 39,29 39,23" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="55,20 61,23 61,29 55,32 49,29 49,23" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="35,35 41,38 41,44 35,47 29,44 29,38" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="45,35 51,38 51,44 45,47 39,44 39,38" fill="#9B72CF" opacity="0.4"/>
+          <polygon points="55,35 61,38 61,44 55,47 49,44 49,38" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="35,50 41,53 41,59 35,62 29,59 29,53" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="45,50 51,53 51,59 45,62 39,59 39,53" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <polygon points="55,50 61,53 61,59 55,62 49,59 49,53" fill="none" stroke="#9B72CF" stroke-width="1.5" opacity="0.8"/>
+          <!-- Front layer (channel 1) -->
+          <polygon points="25,30 31,33 31,39 25,42 19,39 19,33" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="35,30 41,33 41,39 35,42 29,39 29,33" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="45,30 51,33 51,39 45,42 39,39 39,33" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="25,45 31,48 31,54 25,57 19,54 19,48" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="35,45 41,48 41,54 35,57 29,54 29,48" fill="#4285F4" opacity="0.5"/>
+          <polygon points="45,45 51,48 51,54 45,57 39,54 39,48" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="25,60 31,63 31,69 25,72 19,69 19,63" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="35,60 41,63 41,69 35,72 29,69 29,63" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="45,60 51,63 51,69 45,72 39,69 39,63" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <!-- Output -->
+          <line x1="55" y1="75" x2="75" y2="75" stroke="url(#grad26)" stroke-width="2"/>
+          <polygon points="80,75 74,71 74,79" fill="url(#grad26)"/>
+          <polygon points="85,68 93,73 93,83 85,88 77,83 77,73" fill="url(#grad26)" stroke="url(#grad26)" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Multi-Channel</h3>
+      <p style="color: #666;">3D convolution across RGB-like input channels.</p>
+    </div>
+
+    <!-- Variation 27: Dilated Kernel -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">27</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad27" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Dilated 3x3 with gaps -->
+          <polygon points="20,15 27,19 27,27 20,31 13,27 13,19" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <polygon points="50,15 57,19 57,27 50,31 43,27 43,19" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <polygon points="80,15 87,19 87,27 80,31 73,27 73,19" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <!-- Skipped positions (dashed) -->
+          <polygon points="35,15 42,19 42,27 35,31 28,27 28,19" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+          <polygon points="65,15 72,19 72,27 65,31 58,27 58,19" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+          <polygon points="20,45 27,49 27,57 20,61 13,57 13,49" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <polygon points="35,45 42,49 42,57 35,61 28,57 28,49" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+          <polygon points="50,45 57,49 57,57 50,61 43,57 43,49" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2.5"/>
+          <polygon points="65,45 72,49 72,57 65,61 58,57 58,49" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+          <polygon points="80,45 87,49 87,57 80,61 73,57 73,49" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <polygon points="20,75 27,79 27,87 20,91 13,87 13,79" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <polygon points="35,75 42,79 42,87 35,91 28,87 28,79" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+          <polygon points="50,75 57,79 57,87 50,91 43,87 43,79" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <polygon points="65,75 72,79 72,87 65,91 58,87 58,79" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+          <polygon points="80,75 87,79 87,87 80,91 73,87 73,79" fill="url(#grad27)" stroke="url(#grad27)" stroke-width="2"/>
+          <!-- Dilation indicator lines -->
+          <line x1="20" y1="31" x2="20" y2="45" stroke="url(#grad27)" stroke-width="1" opacity="0.4"/>
+          <line x1="50" y1="31" x2="50" y2="45" stroke="url(#grad27)" stroke-width="1" opacity="0.4"/>
+          <line x1="80" y1="31" x2="80" y2="45" stroke="url(#grad27)" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Dilated Kernel</h3>
+      <p style="color: #666;">Atrous convolution with dilation rate=2 for larger receptive field.</p>
+    </div>
+
+    <!-- Variation 28: Feature Extraction Flow -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">28</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad28" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Input grid -->
+          <polygon points="15,25 21,28 21,34 15,37 9,34 9,28" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="25,25 31,28 31,34 25,37 19,34 19,28" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="35,25 41,28 41,34 35,37 29,34 29,28" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="15,40 21,43 21,49 15,52 9,49 9,43" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="25,40 31,43 31,49 25,52 19,49 19,43" fill="#4285F4" opacity="0.5"/>
+          <polygon points="35,40 41,43 41,49 35,52 29,49 29,43" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="15,55 21,58 21,64 15,67 9,64 9,58" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="25,55 31,58 31,64 25,67 19,64 19,58" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <polygon points="35,55 41,58 41,64 35,67 29,64 29,58" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+          <!-- Arrow -->
+          <path d="M45,45 L55,45" stroke="url(#grad28)" stroke-width="2"/>
+          <polygon points="58,45 52,41 52,49" fill="url(#grad28)"/>
+          <!-- Mid feature -->
+          <polygon points="70,35 78,40 78,50 70,55 62,50 62,40" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <polygon points="70,55 78,60 78,70 70,75 62,70 62,60" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <circle cx="70" cy="47" r="3" fill="#9B72CF"/>
+          <circle cx="70" cy="67" r="3" fill="#9B72CF"/>
+          <!-- Arrow -->
+          <path d="M82,55 L92,55" stroke="url(#grad28)" stroke-width="2"/>
+          <polygon points="95,55 89,51 89,59" fill="url(#grad28)"/>
+          <!-- Output -->
+          <polygon points="107,45 117,52 117,66 107,73 97,66 97,52" fill="url(#grad28)" stroke="url(#grad28)" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Feature Flow</h3>
+      <p style="color: #666;">Progressive feature extraction from input to output.</p>
+    </div>
+
+    <!-- Variation 29: Residual Connection -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">29</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad29" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Input kernel -->
+          <polygon points="25,15 32,19 32,27 25,31 18,27 18,19" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="40,15 47,19 47,27 40,31 33,27 33,19" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="25,32 32,36 32,44 25,48 18,44 18,36" fill="none" stroke="#4285F4" stroke-width="2"/>
+          <polygon points="40,32 47,36 47,44 40,48 33,44 33,36" fill="#4285F4" opacity="0.4"/>
+          <!-- Conv block -->
+          <rect x="55" y="20" width="30" height="25" rx="3" fill="none" stroke="#9B72CF" stroke-width="2"/>
+          <polygon points="70,27 76,31 76,37 70,41 64,37 64,31" fill="#9B72CF" opacity="0.5" stroke="#9B72CF" stroke-width="1.5"/>
+          <text x="70" y="52" font-size="5" fill="#9B72CF" text-anchor="middle">CONV</text>
+          <!-- Skip connection -->
+          <path d="M33,48 L33,75 L55,75" stroke="url(#grad29)" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+          <!-- Main path -->
+          <line x1="47" y1="32" x2="55" y2="32" stroke="url(#grad29)" stroke-width="2"/>
+          <line x1="70" y1="45" x2="70" y2="65" stroke="url(#grad29)" stroke-width="2"/>
+          <!-- Add operation -->
+          <circle cx="70" cy="75" r="8" fill="none" stroke="url(#grad29)" stroke-width="2"/>
+          <text x="70" y="78" font-size="10" fill="url(#grad29)" text-anchor="middle">+</text>
+          <!-- Output -->
+          <polygon points="70,88 78,93 78,99 70,104 62,99 62,93" fill="url(#grad29)" stroke="url(#grad29)" stroke-width="2" transform="translate(0,-8)"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Residual Block</h3>
+      <p style="color: #666;">Skip connection bypassing convolution for residual learning.</p>
+    </div>
+
+    <!-- Variation 30: Compact Symbol -->
+    <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0;">
+      <span class="variation-number">30</span>
+      <div class="logo-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad30" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Compact 3x3 - tightly packed -->
+          <polygon points="35,22 43,27 43,37 35,42 27,37 27,27" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="50,22 58,27 58,37 50,42 42,37 42,27" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="65,22 73,27 73,37 65,42 57,37 57,27" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="35,40 43,45 43,55 35,60 27,55 27,45" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="50,40 58,45 58,55 50,60 42,55 42,45" fill="url(#grad30)"/>
+          <polygon points="65,40 73,45 73,55 65,60 57,55 57,45" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="35,58 43,63 43,73 35,78 27,73 27,63" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="50,58 58,63 58,73 50,78 42,73 42,63" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <polygon points="65,58 73,63 73,73 65,78 57,73 57,63" fill="none" stroke="url(#grad30)" stroke-width="2.5"/>
+          <!-- Subtle corner accents -->
+          <circle cx="27" cy="22" r="2" fill="#4285F4"/>
+          <circle cx="73" cy="22" r="2" fill="#7B72CF"/>
+          <circle cx="27" cy="78" r="2" fill="#9B72CF"/>
+          <circle cx="73" cy="78" r="2" fill="#F28B82"/>
+        </svg>
+      </div>
+      <h3 style="color: #333;">Compact Symbol</h3>
+      <p style="color: #666;">Tightly packed kernel grid - ideal as standalone logo mark.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Structural Analysis Intelligence - Logo Exploration v1.0</p>
+  </footer>
+</body>
+</html>
