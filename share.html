@@ -450,6 +450,103 @@
       <p>Convolutional kernel grid representing AI/ML analysis of structural data.</p>
     </div>
 
+    <!-- Variation E: Conv Kernel with filled hexagons -->
+    <div class="card">
+      <span class="variation-number">E</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradE" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Row 1 -->
+          <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="#4285F4"/>
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="#5B7AE8"/>
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="#7B72CF"/>
+          <!-- Row 2 -->
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="#5B7AE8"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="url(#gradE)"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="#B87A95"/>
+          <!-- Row 3 -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="#9B72CF"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="#C87F8A"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="#F28B82"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <!-- Row 1 -->
+          <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="var(--mono-light)"/>
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="var(--mono-light)"/>
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="var(--mono-mid)"/>
+          <!-- Row 2 -->
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="var(--mono-light)"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="var(--mono-light)"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="var(--mono-mid)"/>
+          <!-- Row 3 -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="var(--mono-mid)"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="var(--mono-dark)"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="var(--mono-dark)"/>
+        </svg>
+      </div>
+      <h3>Solid Kernel</h3>
+      <p>Filled hexagonal grid with gradient color flow across the kernel.</p>
+    </div>
+
+    <!-- Variation F: Conv Kernel in triangular arrangement -->
+    <!-- 
+      Triangular arrangement: 1 hex on top, 2 in middle, 3 on bottom = 6 hexagons
+      Using same hex size as D (r=6)
+      
+      Row 1: 1 hex centered
+      Row 2: 2 hexes
+      Row 3: 3 hexes
+      
+      Centers spaced s=14 apart
+      viewBox 42x42
+    -->
+    <div class="card">
+      <span class="variation-number">F</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradF" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="50%" style="stop-color:#9B72CF"/>
+              <stop offset="100%" style="stop-color:#F28B82"/>
+            </linearGradient>
+          </defs>
+          <!-- Row 1: 1 hex centered at x=21 -->
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="#4285F4" stroke-width="1"/>
+          <!-- Row 2: 2 hexes -->
+          <polygon points="14,15 19.2,18 19.2,24 14,27 8.8,24 8.8,18" fill="none" stroke="#6B5DD3" stroke-width="1"/>
+          <polygon points="28,15 33.2,18 33.2,24 28,27 22.8,24 22.8,18" fill="url(#gradF)" stroke="url(#gradF)" stroke-width="1.2"/>
+          <!-- Row 3: 3 hexes -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="none" stroke="#9B72CF" stroke-width="1"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="none" stroke="#C87F8A" stroke-width="1"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="none" stroke="#F28B82" stroke-width="1"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <!-- Row 1: 1 hex -->
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <!-- Row 2: 2 hexes -->
+          <polygon points="14,15 19.2,18 19.2,24 14,27 8.8,24 8.8,18" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="28,15 33.2,18 33.2,24 28,27 22.8,24 22.8,18" fill="var(--mono-light)" stroke="var(--mono-light)" stroke-width="1.2"/>
+          <!-- Row 3: 3 hexes -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
+        </svg>
+      </div>
+      <h3>Triangular Kernel</h3>
+      <p>Pyramid-shaped convolution pattern suggesting hierarchical feature extraction.</p>
+    </div>
+
   </div>
 
   <script>
