@@ -418,28 +418,38 @@
             </linearGradient>
           </defs>
           <!-- Row 1: centers at y=7 -->
+          <!-- Diagonal gradient: top-left (0,0) = blue, bottom-right (2,2) = coral -->
+          <!-- Position (0,0): blue -->
           <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="none" stroke="#4285F4" stroke-width="1"/>
-          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="#5B7AE8" stroke-width="1"/>
-          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="none" stroke="#7B72CF" stroke-width="1"/>
+          <!-- Position (1,0): 25% along diagonal -->
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="#6279DB" stroke-width="1"/>
+          <!-- Position (2,0): 50% along diagonal -->
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="none" stroke="#9B72CF" stroke-width="1"/>
           <!-- Row 2: centers at y=21 -->
-          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="none" stroke="#5B7AE8" stroke-width="1"/>
+          <!-- Position (0,1): 25% along diagonal -->
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="none" stroke="#6279DB" stroke-width="1"/>
+          <!-- Position (1,1): 50% along diagonal - center, filled -->
           <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="url(#gradD)" stroke="url(#gradD)" stroke-width="1.2"/>
-          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="none" stroke="#B87A95" stroke-width="1"/>
+          <!-- Position (2,1): 75% along diagonal -->
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="none" stroke="#C87F8A" stroke-width="1"/>
           <!-- Row 3: centers at y=35 -->
+          <!-- Position (0,2): 50% along diagonal -->
           <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="none" stroke="#9B72CF" stroke-width="1"/>
+          <!-- Position (1,2): 75% along diagonal -->
           <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="none" stroke="#C87F8A" stroke-width="1"/>
+          <!-- Position (2,2): 100% along diagonal - coral -->
           <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="none" stroke="#F28B82" stroke-width="1"/>
         </svg>
         <!-- Mono Version -->
         <svg class="mono-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
-          <!-- Row 1 -->
+          <!-- Row 1 - diagonal gradient: light at top-left, dark at bottom-right -->
           <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
           <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
           <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
           <!-- Row 2 -->
           <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
-          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="var(--mono-light)" stroke="var(--mono-light)" stroke-width="1.2"/>
-          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="var(--mono-mid)" stroke="var(--mono-mid)" stroke-width="1.2"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
           <!-- Row 3 -->
           <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
           <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
@@ -545,6 +555,133 @@
       </div>
       <h3>Triangular Kernel</h3>
       <p>Pyramid-shaped convolution pattern suggesting hierarchical feature extraction.</p>
+    </div>
+
+    <!-- Variation G: 3-hexagon cluster with graph connections -->
+    <!-- 
+      Same triangle arrangement as B but with connecting edges between centers
+      Centers: (22, 11.61), (10, 32.39), (34, 32.39)
+      Each edge takes the color of one of its connected nodes
+    -->
+    <div class="card">
+      <span class="variation-number">G</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradGa" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4285F4"/>
+              <stop offset="100%" style="stop-color:#6B9CF4"/>
+            </linearGradient>
+            <linearGradient id="gradGb" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B6BCF"/>
+              <stop offset="100%" style="stop-color:#9B72CF"/>
+            </linearGradient>
+            <linearGradient id="gradGc" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#F28B82"/>
+              <stop offset="100%" style="stop-color:#F4A59F"/>
+            </linearGradient>
+          </defs>
+          <!-- Graph edges - each colored by one of its nodes -->
+          <line x1="22" y1="11.61" x2="10" y2="32.39" stroke="#4285F4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="22" y1="11.61" x2="34" y2="32.39" stroke="#F28B82" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="10" y1="32.39" x2="34" y2="32.39" stroke="#9B72CF" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Hexagon nodes with B's colors -->
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="url(#gradGa)"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="url(#gradGb)"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="url(#gradGc)"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <!-- Graph edges -->
+          <line x1="22" y1="11.61" x2="10" y2="32.39" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="22" y1="11.61" x2="34" y2="32.39" stroke="var(--mono-dark)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="10" y1="32.39" x2="34" y2="32.39" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Hexagon nodes -->
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="var(--mono-light)"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="var(--mono-mid)"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="var(--mono-dark)"/>
+        </svg>
+      </div>
+      <h3>Graph Nodes</h3>
+      <p>Connected hexagonal nodes representing a neural network graph structure.</p>
+    </div>
+
+    <!-- Variation H: 3x3 filled kernel with sparse connections (like G but 3x3) -->
+    <!-- 
+      Same 3x3 grid as E (filled hexagons) but with sparse connections
+      Uses colored edges like G (each edge takes color from a connected node)
+      Edges drawn behind filled hexagons so they appear to connect the nodes
+      
+      Grid centers (spacing = 14):
+        Row 1: (7,7), (21,7), (35,7)
+        Row 2: (7,21), (21,21), (35,21)
+        Row 3: (7,35), (21,35), (35,35)
+      
+      Sparse connections (irregular pattern):
+        1. (7,7) → (21,21): diagonal
+        2. (21,7) → (21,21): vertical
+        3. (35,7) → (21,7): horizontal
+        4. (7,21) → (7,35): vertical
+        5. (35,35) → (21,35): horizontal
+        6. (35,21) → (21,35): diagonal
+    -->
+    <div class="card">
+      <span class="variation-number">H</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sparse connections - colored by source node, drawn first (behind hexes) -->
+          <!-- (7,7)→(21,21): blue connection -->
+          <line x1="7" y1="7" x2="21" y2="21" stroke="#4285F4" stroke-width="1.2"/>
+          <!-- (21,7)→(21,21): vertical connection -->
+          <line x1="21" y1="7" x2="21" y2="21" stroke="#5B7AE8" stroke-width="1.2"/>
+          <!-- (35,7)→(21,7): horizontal connection -->
+          <line x1="35" y1="7" x2="21" y2="7" stroke="#7B72CF" stroke-width="1.2"/>
+          <!-- (7,21)→(7,35): blue connection -->
+          <line x1="7" y1="21" x2="7" y2="35" stroke="#5B7AE8" stroke-width="1.2"/>
+          <!-- (35,35)→(21,35): horizontal connection -->
+          <line x1="35" y1="35" x2="21" y2="35" stroke="#F28B82" stroke-width="1.2"/>
+          <!-- (35,21)→(21,35): pink connection -->
+          <line x1="35" y1="21" x2="21" y2="35" stroke="#B87A95" stroke-width="1.2"/>
+          <!-- Row 1: filled hexagons -->
+          <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="#4285F4"/>
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="#5B7AE8"/>
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="#7B72CF"/>
+          <!-- Row 2 -->
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="#5B7AE8"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="#9B72CF"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="#B87A95"/>
+          <!-- Row 3 -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="#9B72CF"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="#C87F8A"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="#F28B82"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sparse connections -->
+          <line x1="7" y1="7" x2="21" y2="21" stroke="var(--mono-light)" stroke-width="1.2"/>
+          <line x1="21" y1="7" x2="21" y2="21" stroke="var(--mono-light)" stroke-width="1.2"/>
+          <line x1="35" y1="7" x2="21" y2="7" stroke="var(--mono-mid)" stroke-width="1.2"/>
+          <line x1="7" y1="21" x2="7" y2="35" stroke="var(--mono-light)" stroke-width="1.2"/>
+          <line x1="35" y1="35" x2="21" y2="35" stroke="var(--mono-dark)" stroke-width="1.2"/>
+          <line x1="35" y1="21" x2="21" y2="35" stroke="var(--mono-mid)" stroke-width="1.2"/>
+          <!-- Row 1 -->
+          <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="var(--mono-light)"/>
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="var(--mono-light)"/>
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="var(--mono-mid)"/>
+          <!-- Row 2 -->
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="var(--mono-light)"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="var(--mono-mid)"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="var(--mono-mid)"/>
+          <!-- Row 3 -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="var(--mono-mid)"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="var(--mono-dark)"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="var(--mono-dark)"/>
+        </svg>
+      </div>
+      <h3>Sparse Graph</h3>
+      <p>Filled hexagonal nodes with colored sparse neural network connections.</p>
     </div>
 
   </div>
