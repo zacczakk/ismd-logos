@@ -265,47 +265,43 @@
 
     <!-- Variation A: Bold Weight -->
     <!-- 
-      FLAT-TOP HEXAGON with radius r (center to vertex):
-      - Width (point to point horizontally) = 2r
-      - Height (flat edge to flat edge) = r * √3
+      POINTY-TOP HEXAGON with radius r (center to vertex):
+      - Width (flat to flat) = r * √3
+      - Height (point to point) = 2r
       
-      Vertices from center (cx, cy), starting top-right, going clockwise:
-        (cx + r,     cy)           - right
-        (cx + r/2,   cy + r*√3/2)  - bottom-right  
-        (cx - r/2,   cy + r*√3/2)  - bottom-left
-        (cx - r,     cy)           - left
-        (cx - r/2,   cy - r*√3/2)  - top-left
-        (cx + r/2,   cy - r*√3/2)  - top-right
+      Vertices from center (cx, cy), clockwise from top:
+        (cx,            cy - r)       - top
+        (cx + r*√3/2,   cy - r/2)     - top-right
+        (cx + r*√3/2,   cy + r/2)     - bottom-right
+        (cx,            cy + r)       - bottom
+        (cx - r*√3/2,   cy + r/2)     - bottom-left
+        (cx - r*√3/2,   cy - r/2)     - top-left
       
-      Using r = 10:
-      - Width = 20, Height = 17.32
-      - half-height = 8.66
+      Using r = 10: half-width = 8.66, height = 20
       
       Centers on equilateral triangle with side s = 24:
       - Triangle height = 24 * √3/2 = 20.78
-      - Top center: (width/2, padding + 8.66)
-      - Bottom-left: (padding + 10, padding + 8.66 + 20.78)
-      - Bottom-right: (padding + 10 + 24, padding + 8.66 + 20.78)
+      - Top center: (center-x, top-offset + r)
+      - Bottom centers offset by triangle height
       
       Content bounds:
-      - Width = 24 + 20 = 44 (centers span 24, plus r on each side)
-      - Height = 20.78 + 17.32 = 38.1
+      - Width = 24 + 17.32 = 41.32 (centers span 24, plus half-width on each side)
+      - Height = 20.78 + 20 = 40.78
       
-      For 1:1 with padding=2 for stroke:
-      - Use 48x48 viewBox
-      - Horizontal offset = (48 - 44) / 2 = 2
-      - Vertical offset = (48 - 38.1) / 2 = 4.95
+      Use 44x44 viewBox with padding
+      Horizontal offset = (44 - 41.32) / 2 = 1.34
+      Vertical offset = (44 - 40.78) / 2 = 1.61
       
       Centers:
-      - Top: (24, 4.95 + 8.66) = (24, 13.61)
-      - Bottom-left: (2 + 10, 4.95 + 8.66 + 20.78) = (12, 34.39)
-      - Bottom-right: (2 + 10 + 24, 34.39) = (36, 34.39)
+      - Top: (22, 1.61 + 10) = (22, 11.61)
+      - Bottom-left: (1.34 + 8.66, 1.61 + 10 + 20.78) = (10, 32.39)
+      - Bottom-right: (10 + 24, 32.39) = (34, 32.39)
     -->
     <div class="card">
       <span class="variation-number">A</span>
       <div class="logo-container">
         <!-- Gradient Version -->
-        <svg class="gradient-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <svg class="gradient-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradA" x1="0%" y1="100%" x2="100%" y2="0%">
               <stop offset="0%" style="stop-color:#4285F4"/>
@@ -313,18 +309,18 @@
               <stop offset="100%" style="stop-color:#F28B82"/>
             </linearGradient>
           </defs>
-          <!-- Top: center (24, 13.61), r=10 -->
-          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Bottom-left: center (12, 34.39) -->
-          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Bottom-right: center (36, 34.39) -->
-          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Top: center (22, 11.61), r=10 -->
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Bottom-left: center (10, 32.39) -->
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Bottom-right: center (34, 32.39) -->
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="none" stroke="url(#gradA)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <!-- Mono Version -->
-        <svg class="mono-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="none" stroke="var(--mono-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="var(--mono-mid)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="var(--mono-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="mono-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="none" stroke="var(--mono-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="none" stroke="var(--mono-mid)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="none" stroke="var(--mono-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <h3>Bold Hexagons</h3>
@@ -336,7 +332,7 @@
       <span class="variation-number">B</span>
       <div class="logo-container">
         <!-- Gradient Version -->
-        <svg class="gradient-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <svg class="gradient-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradBa" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" style="stop-color:#4285F4"/>
@@ -351,15 +347,15 @@
               <stop offset="100%" style="stop-color:#F4A59F"/>
             </linearGradient>
           </defs>
-          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="url(#gradBa)"/>
-          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="url(#gradBb)"/>
-          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="url(#gradBc)"/>
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="url(#gradBa)"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="url(#gradBb)"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="url(#gradBc)"/>
         </svg>
         <!-- Mono Version -->
-        <svg class="mono-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="var(--mono-light)"/>
-          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="var(--mono-mid)"/>
-          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="var(--mono-dark)"/>
+        <svg class="mono-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="var(--mono-light)"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="var(--mono-mid)"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="var(--mono-dark)"/>
         </svg>
       </div>
       <h3>Gradient Solids</h3>
@@ -371,7 +367,7 @@
       <span class="variation-number">C</span>
       <div class="logo-container">
         <!-- Gradient Version -->
-        <svg class="gradient-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <svg class="gradient-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradC" x1="0%" y1="100%" x2="100%" y2="0%">
               <stop offset="0%" style="stop-color:#4285F4"/>
@@ -379,15 +375,15 @@
               <stop offset="100%" style="stop-color:#F28B82"/>
             </linearGradient>
           </defs>
-          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="url(#gradC)"/>
-          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="url(#gradC)" stroke-width="2"/>
-          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="url(#gradC)" stroke-width="2"/>
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="url(#gradC)"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="none" stroke="url(#gradC)" stroke-width="2"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="none" stroke="url(#gradC)" stroke-width="2"/>
         </svg>
         <!-- Mono Version -->
-        <svg class="mono-version" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="34,13.61 29,22.27 19,22.27 14,13.61 19,4.95 29,4.95" fill="var(--mono-light)"/>
-          <polygon points="22,34.39 17,43.05 7,43.05 2,34.39 7,25.73 17,25.73" fill="none" stroke="var(--mono-mid)" stroke-width="2"/>
-          <polygon points="46,34.39 41,43.05 31,43.05 26,34.39 31,25.73 41,25.73" fill="none" stroke="var(--mono-dark)" stroke-width="2"/>
+        <svg class="mono-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="22,1.61 30.66,6.61 30.66,16.61 22,21.61 13.34,16.61 13.34,6.61" fill="var(--mono-light)"/>
+          <polygon points="10,22.39 18.66,27.39 18.66,37.39 10,42.39 1.34,37.39 1.34,27.39" fill="none" stroke="var(--mono-mid)" stroke-width="2"/>
+          <polygon points="34,22.39 42.66,27.39 42.66,37.39 34,42.39 25.34,37.39 25.34,27.39" fill="none" stroke="var(--mono-dark)" stroke-width="2"/>
         </svg>
       </div>
       <h3>Focal Point</h3>
@@ -396,27 +392,24 @@
 
     <!-- Variation D: Conv Kernel - 3x3 hex grid -->
     <!-- 
-      3x3 grid with hex radius r=6, centers spaced s=14 apart (both directions)
-      Hex width = 12, height = 10.39
+      Pointy-top hexagons, r=6: half-width = 5.2, height = 12
+      3x3 grid with centers spaced s=14 apart
       
-      Grid spans: 2*14 = 28 in each direction for centers
-      Total bounds: 28 + 12 = 40 width, 28 + 10.39 = 38.39 height
+      Grid spans: 2*14 = 28 in each direction
+      Total bounds: 28 + 10.4 = 38.4 width, 28 + 12 = 40 height
       
-      Use 44x44 viewBox (padding for stroke + arrow)
-      Horizontal offset = (44 - 40) / 2 = 2
-      Vertical offset = 2 (leave room for arrow at bottom)
+      Use 42x42 viewBox
+      Horizontal offset = (42 - 38.4) / 2 = 1.8
+      Vertical offset = (42 - 40) / 2 = 1
       
-      Row 1 centers Y = 2 + 5.2 = 7.2
-      Row 2 centers Y = 7.2 + 14 = 21.2  
-      Row 3 centers Y = 21.2 + 14 = 35.2
-      
-      Col centers X = 8, 22, 36
+      Col centers X = 1.8 + 5.2 = 7, 21, 35
+      Row centers Y = 1 + 6 = 7, 21, 35
     -->
     <div class="card">
       <span class="variation-number">D</span>
       <div class="logo-container">
         <!-- Gradient Version -->
-        <svg class="gradient-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <svg class="gradient-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradD" x1="0%" y1="100%" x2="100%" y2="0%">
               <stop offset="0%" style="stop-color:#4285F4"/>
@@ -424,35 +417,38 @@
               <stop offset="100%" style="stop-color:#F28B82"/>
             </linearGradient>
           </defs>
-          <!-- Row 1 -->
-          <polygon points="14,7.2 11,12.4 5,12.4 2,7.2 5,2 11,2" fill="none" stroke="#4285F4" stroke-width="1"/>
-          <polygon points="28,7.2 25,12.4 19,12.4 16,7.2 19,2 25,2" fill="none" stroke="#5B7AE8" stroke-width="1"/>
-          <polygon points="42,7.2 39,12.4 33,12.4 30,7.2 33,2 39,2" fill="none" stroke="#7B72CF" stroke-width="1"/>
-          <!-- Row 2 -->
-          <polygon points="14,21.2 11,26.4 5,26.4 2,21.2 5,16 11,16" fill="none" stroke="#5B7AE8" stroke-width="1"/>
-          <polygon points="28,21.2 25,26.4 19,26.4 16,21.2 19,16 25,16" fill="url(#gradD)" stroke="url(#gradD)" stroke-width="1.2"/>
-          <polygon points="42,21.2 39,26.4 33,26.4 30,21.2 33,16 39,16" fill="none" stroke="#B87A95" stroke-width="1"/>
-          <!-- Row 3 -->
-          <polygon points="14,35.2 11,40.4 5,40.4 2,35.2 5,30 11,30" fill="none" stroke="#9B72CF" stroke-width="1"/>
-          <polygon points="28,35.2 25,40.4 19,40.4 16,35.2 19,30 25,30" fill="none" stroke="#C87F8A" stroke-width="1"/>
-          <polygon points="42,35.2 39,40.4 33,40.4 30,35.2 33,30 39,30" fill="none" stroke="#F28B82" stroke-width="1"/>
+          <!-- Row 1: centers at y=7 -->
+          <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="none" stroke="#4285F4" stroke-width="1"/>
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="#5B7AE8" stroke-width="1"/>
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="none" stroke="#7B72CF" stroke-width="1"/>
+          <!-- Row 2: centers at y=21 -->
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="none" stroke="#5B7AE8" stroke-width="1"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="url(#gradD)" stroke="url(#gradD)" stroke-width="1.2"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="none" stroke="#B87A95" stroke-width="1"/>
+          <!-- Row 3: centers at y=35 -->
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="none" stroke="#9B72CF" stroke-width="1"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="none" stroke="#C87F8A" stroke-width="1"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="none" stroke="#F28B82" stroke-width="1"/>
         </svg>
         <!-- Mono Version -->
-        <svg class="mono-version" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mono-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
           <!-- Row 1 -->
-          <polygon points="14,7.2 11,12.4 5,12.4 2,7.2 5,2 11,2" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
-          <polygon points="28,7.2 25,12.4 19,12.4 16,7.2 19,2 25,2" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
-          <polygon points="42,7.2 39,12.4 33,12.4 30,7.2 33,2 39,2" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <polygon points="7,1 12.2,4 12.2,10 7,13 1.8,10 1.8,4" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="21,1 26.2,4 26.2,10 21,13 15.8,10 15.8,4" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="35,1 40.2,4 40.2,10 35,13 29.8,10 29.8,4" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
           <!-- Row 2 -->
-          <polygon points="14,21.2 11,26.4 5,26.4 2,21.2 5,16 11,16" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
-          <polygon points="28,21.2 25,26.4 19,26.4 16,21.2 19,16 25,16" fill="var(--mono-light)" stroke="var(--mono-light)" stroke-width="1.2"/>
-          <polygon points="42,21.2 39,26.4 33,26.4 30,21.2 33,16 39,16" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <polygon points="7,15 12.2,18 12.2,24 7,27 1.8,24 1.8,18" fill="none" stroke="var(--mono-light)" stroke-width="1"/>
+          <polygon points="21,15 26.2,18 26.2,24 21,27 15.8,24 15.8,18" fill="var(--mono-light)" stroke="var(--mono-light)" stroke-width="1.2"/>
+          <polygon points="35,15 40.2,18 40.2,24 35,27 29.8,24 29.8,18" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
           <!-- Row 3 -->
-          <polygon points="14,35.2 11,40.4 5,40.4 2,35.2 5,30 11,30" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
-          <polygon points="28,35.2 25,40.4 19,40.4 16,35.2 19,30 25,30" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
-          <polygon points="42,35.2 39,40.4 33,40.4 30,35.2 33,30 39,30" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
+          <polygon points="7,29 12.2,32 12.2,38 7,41 1.8,38 1.8,32" fill="none" stroke="var(--mono-mid)" stroke-width="1"/>
+          <polygon points="21,29 26.2,32 26.2,38 21,41 15.8,38 15.8,32" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
+          <polygon points="35,29 40.2,32 40.2,38 35,41 29.8,38 29.8,32" fill="none" stroke="var(--mono-dark)" stroke-width="1"/>
         </svg>
       </div>
+      <h3>Neural Kernel</h3>
+      <p>Convolutional kernel grid representing AI/ML analysis of structural data.</p>
+    </div>
       <h3>Neural Kernel</h3>
       <p>Convolutional kernel grid representing AI/ML analysis of structural data.</p>
     </div>
