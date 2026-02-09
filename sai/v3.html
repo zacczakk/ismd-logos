@@ -87,65 +87,43 @@
       margin-bottom: 30px;
     }
 
-    /* Toggle Controls */
+    /* Toggle Controls - Fixed bottom pill */
     .controls {
-      position: sticky;
-      /* Sticky within the anchor */
-      top: 20px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      /* Left align */
+      flex-direction: row;
+      align-items: center;
       justify-content: center;
-      gap: 15px;
-      z-index: 1000;
+      gap: 50px;
+      z-index: 9999;
 
-      /* Match .card styling */
+      /* Pill styling */
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
+      border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
 
-      /* Remove fixed width, let it fit content but with min width */
-      width: auto;
-      min-width: 160px;
-      padding: 20px;
+      padding: 12px 24px;
     }
 
-    /* Dark mode background handled by var(--bg-card) */
+    /* Hide the controls-anchor wrapper since controls are now fixed */
+    .controls-anchor {
+      display: none;
+    }
 
     /* Layout Wrapper */
     .layout-wrapper {
       position: relative;
       max-width: 900px;
-      /* Reduced from 1200px to force wider 2-col tiles */
       margin: 0 auto;
-    }
-
-    /* Controls Anchor - positions the sticky container outside the grid */
-    .controls-anchor {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      /* Start at the right edge of the wrapper */
-      margin-left: 30px;
-      /* Same gap as grid (30px) */
-      height: 100%;
-      /* Full height to allow sticky behavior */
-    }
-
-    /* Ensure it doesn't cause horizontal scroll or overlap on small screens */
-    @media (max-width: 1450px) {
-      .controls-anchor {
-        display: none;
-        /* Hide on smaller screens or adjust as needed */
-      }
-
-      /* Fallback for small screens? User didn't ask, but hiding is safer than breaking layout. 
-         Actually, let's keep it simple as requested. */
+      padding-bottom: 80px;
+      /* Space for fixed controls */
     }
 
     .toggle-row {
@@ -1095,22 +1073,22 @@
 
     </div>
 
-    <!-- Controls Floating on the Right -->
-    <div class="controls-anchor">
-      <div class="controls">
-        <div class="toggle-row">
-          <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="button" tabindex="0"
-            aria-label="Toggle dark mode"></div>
-          <span>Light/Dark</span>
-        </div>
-        <div class="toggle-row">
-          <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="button" tabindex="0"
-            aria-label="Toggle monochrome"></div>
-          <span>Color/Mono</span>
-        </div>
-      </div>
-    </div>
+  </div>
 
+  <!-- Fixed Bottom Controls Pill -->
+  <div class="controls">
+    <div class="toggle-row">
+      <span>Light</span>
+      <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="button" tabindex="0"
+        aria-label="Toggle dark mode"></div>
+      <span>Dark</span>
+    </div>
+    <div class="toggle-row">
+      <span>Color</span>
+      <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="button" tabindex="0"
+        aria-label="Toggle monochrome"></div>
+      <span>Mono</span>
+    </div>
   </div>
 
   <script>
