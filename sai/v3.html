@@ -213,6 +213,12 @@
       margin: 0 auto;
     }
 
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -308,6 +314,8 @@
     /* Design B-F color schemes */
     /* Gradient + Light */
     :root {
+      --a-accent: #4285F4;
+      --a-secondary: #48484c;
       --b-accent: #5B7AE8;
       --b-secondary: #48484c;
       --c-accent: #7B72CF;
@@ -326,6 +334,8 @@
 
     /* Gradient + Dark */
     [data-theme="dark"] {
+      --a-accent: #4285F4;
+      --a-secondary: #b8b8bc;
       --b-accent: #5B7AE8;
       --b-secondary: #b8b8bc;
       --c-accent: #7B72CF;
@@ -344,6 +354,8 @@
 
     /* Mono + Light */
     [data-color="mono"] {
+      --a-accent: #3a3a3e;
+      --a-secondary: #909094;
       --b-accent: #3a3a3e;
       --b-secondary: #909094;
       --c-accent: #3a3a3e;
@@ -362,6 +374,8 @@
 
     /* Mono + Dark */
     [data-theme="dark"][data-color="mono"] {
+      --a-accent: #b8b8bc;
+      --a-secondary: #606064;
       --b-accent: #b8b8bc;
       --b-secondary: #606064;
       --c-accent: #b8b8bc;
@@ -426,7 +440,6 @@
           <!-- Gradient Version -->
           <svg class="gradient-version" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <!-- Clip paths: one per stroked hex, all using the same r=6 polygon -->
               <clipPath id="clipA-TC">
                 <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
               </clipPath>
@@ -450,62 +463,41 @@
               </clipPath>
             </defs>
 
-            <!-- Shortened edges (boundary to boundary) -->
-            <!-- 1. TL->C diagonal -->
+            <!-- Edges -->
             <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="#6B5DD3" stroke-width="1.5"
               stroke-linecap="round" />
-            <!-- 2. TC->TR horizontal -->
             <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round" />
-            <!-- 3. C->TR diagonal -->
             <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="#7B72CF" stroke-width="1.5"
               stroke-linecap="round" />
-            <!-- 4. LC->C horizontal -->
             <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round" />
-            <!-- 5. BL->LC vertical -->
             <line x1="7" y1="29" x2="7" y2="27" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round" />
-            <!-- 6. BC->RC diagonal -->
             <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="#B87A95" stroke-width="1.5"
               stroke-linecap="round" />
-            <!-- 7. BC->BR horizontal -->
             <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="#C87F8A" stroke-width="1.5" stroke-linecap="round" />
-            <!-- 8. TR->RC vertical -->
             <line x1="35" y1="13" x2="35" y2="15" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round" />
 
-            <!-- Row 1 -->
-            <!-- TL: filled blue -->
+            <!-- Hexagons -->
             <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="#4285F4" />
-            <!-- TC: stroked, clipped inward (stroke-width=3, visible=1.5) -->
             <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="#5B7AE8" stroke-width="3"
               clip-path="url(#clipA-TC)" />
-            <!-- TR: stroked, clipped inward -->
             <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="#7B72CF" stroke-width="3"
               clip-path="url(#clipA-TR)" />
-
-            <!-- Row 2 -->
-            <!-- LC: stroked, clipped inward -->
             <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="#5B7AE8" stroke-width="3"
               clip-path="url(#clipA-LC)" />
-            <!-- C: stroked, clipped inward -->
             <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="#9B72CF"
               stroke-width="3" clip-path="url(#clipA-C)" />
-            <!-- RC: stroked, clipped inward -->
             <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="#B87A95"
               stroke-width="3" clip-path="url(#clipA-RC)" />
-
-            <!-- Row 3 -->
-            <!-- BL: stroked, clipped inward -->
             <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="#7B72CF" stroke-width="3"
               clip-path="url(#clipA-BL)" />
-            <!-- BC: filled purple -->
             <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="#9B72CF" />
-            <!-- BR: stroked, clipped inward -->
             <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="#F28B82"
               stroke-width="3" clip-path="url(#clipA-BR)" />
 
             <!-- Divider -->
             <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
 
-            <!-- Text: Structural / Analysis / Intelligence -->
+            <!-- Text -->
             <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
               fill="var(--svg-text)">Structural</text>
             <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
@@ -513,6 +505,7 @@
             <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
               fill="var(--svg-text)">Intelligence</text>
           </svg>
+
           <!-- Mono Version -->
           <svg class="mono-version" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -539,46 +532,44 @@
               </clipPath>
             </defs>
 
-            <!-- Shortened edges (boundary to boundary) -->
-            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--mono-light)" stroke-width="1.5"
+            <!-- Edges -->
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--a-accent)" stroke-width="1.5"
               stroke-linecap="round" />
-            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--mono-light)" stroke-width="1.5"
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--a-secondary)" stroke-width="1.5"
               stroke-linecap="round" />
-            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--mono-mid)" stroke-width="1.5"
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--a-accent)" stroke-width="1.5"
               stroke-linecap="round" />
-            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--mono-light)" stroke-width="1.5"
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--a-secondary)" stroke-width="1.5"
               stroke-linecap="round" />
-            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round" />
-            <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="var(--mono-mid)" stroke-width="1.5"
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--a-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="var(--a-accent)" stroke-width="1.5"
               stroke-linecap="round" />
-            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--mono-dark)" stroke-width="1.5"
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--a-secondary)" stroke-width="1.5"
               stroke-linecap="round" />
-            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--a-accent)" stroke-width="1.5" stroke-linecap="round" />
 
-            <!-- Row 1 -->
-            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--mono-light)" />
-            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--mono-light)"
+            <!-- Hexagons -->
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--a-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--a-secondary)"
               stroke-width="3" clip-path="url(#mClipA-TC)" />
-            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--mono-mid)"
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--a-accent)"
               stroke-width="3" clip-path="url(#mClipA-TR)" />
-            <!-- Row 2 -->
-            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--mono-light)"
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--a-secondary)"
               stroke-width="3" clip-path="url(#mClipA-LC)" />
-            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--mono-mid)"
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--a-accent)"
               stroke-width="3" clip-path="url(#mClipA-C)" />
-            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--mono-mid)"
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--a-accent)"
               stroke-width="3" clip-path="url(#mClipA-RC)" />
-            <!-- Row 3 -->
-            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--mono-mid)"
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--a-secondary)"
               stroke-width="3" clip-path="url(#mClipA-BL)" />
-            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--mono-mid)" />
-            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--mono-dark)"
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--a-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--a-secondary)"
               stroke-width="3" clip-path="url(#mClipA-BR)" />
 
             <!-- Divider -->
             <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
 
-            <!-- Text: Structural / Analysis / Intelligence -->
+            <!-- Text -->
             <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
               fill="var(--svg-text)">Structural</text>
             <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
