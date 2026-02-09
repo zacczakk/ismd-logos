@@ -684,6 +684,132 @@
       <p>Filled hexagonal nodes with colored sparse neural network connections.</p>
     </div>
 
+    <!-- Variation I: 3x3 hex grid with filled nodes and short graph edges -->
+    <!--
+      3x3 grid with top-left and bottom-center hexagons filled.
+      To ensure uniform outer dimensions (pointy corners, same size):
+        - Filled hexagons: r=6, polygon IS the outer boundary
+        - Stroked hexagons: r=6 polygon with stroke-width=3, clipped to the polygon
+          via clipPath so only the inner half (1.5) of the stroke is visible;
+          outer edge = polygon path = r=6, exactly matching filled hexagons
+      Edges are shortened to run from hex outer boundary (r=6) to hex outer boundary.
+
+      Grid centers (spacing=14):
+        (7,7)=TL   (21,7)=TC   (35,7)=TR
+        (7,21)=LC  (21,21)=C   (35,21)=RC
+        (7,35)=BL  (21,35)=BC  (35,35)=BR
+
+      Filled: TL (blue #4285F4), BC (purple #9B72CF)
+      Stroked: all others (r=6, stroke-width=3, clip-path, fill=none)
+
+      8 connections (boundary-to-boundary, computed via ray-hex intersection at r=6):
+        1. TL → C    diagonal    (10.80,10.80) → (17.20,17.20)
+        2. TC → TR   horizontal  (26.20, 7.00) → (29.80, 7.00)
+        3. C  → TR   diagonal    (24.80,17.20) → (31.20,10.80)
+        4. LC → C    horizontal  (12.20,21.00) → (15.80,21.00)
+        5. BL → LC   vertical    ( 7.00,29.00) → ( 7.00,27.00)
+        6. BC → RC   diagonal    (24.80,31.20) → (31.20,24.80)
+        7. BC → BR   horizontal  (26.20,35.00) → (29.80,35.00)
+        8. TR → RC   vertical    (35.00,13.00) → (35.00,15.00)
+    -->
+    <div class="card">
+      <span class="variation-number">I</span>
+      <div class="logo-container">
+        <!-- Gradient Version -->
+        <svg class="gradient-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Clip paths: one per stroked hex, all using the same r=6 polygon -->
+            <clipPath id="clipTC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
+            <clipPath id="clipTR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
+            <clipPath id="clipLC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
+            <clipPath id="clipC"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
+            <clipPath id="clipRC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
+            <clipPath id="clipBL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
+            <clipPath id="clipBR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
+          </defs>
+
+          <!-- Shortened edges (boundary to boundary) -->
+          <!-- 1. TL→C diagonal -->
+          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="#6B5DD3" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 2. TC→TR horizontal -->
+          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 3. C→TR diagonal -->
+          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 4. LC→C horizontal -->
+          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 5. BL→LC vertical -->
+          <line x1="7" y1="29" x2="7" y2="27" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 6. BC→RC diagonal -->
+          <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="#B87A95" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 7. BC→BR horizontal -->
+          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="#C87F8A" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 8. TR→RC vertical -->
+          <line x1="35" y1="13" x2="35" y2="15" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round"/>
+
+          <!-- Row 1 -->
+          <!-- TL: filled blue -->
+          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="#4285F4"/>
+          <!-- TC: stroked, clipped inward (stroke-width=3, visible=1.5) -->
+          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="#5B7AE8" stroke-width="3" clip-path="url(#clipTC)"/>
+          <!-- TR: stroked, clipped inward -->
+          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="#7B72CF" stroke-width="3" clip-path="url(#clipTR)"/>
+
+          <!-- Row 2 -->
+          <!-- LC: stroked, clipped inward -->
+          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="#5B7AE8" stroke-width="3" clip-path="url(#clipLC)"/>
+          <!-- C: stroked, clipped inward -->
+          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="#9B72CF" stroke-width="3" clip-path="url(#clipC)"/>
+          <!-- RC: stroked, clipped inward -->
+          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="#B87A95" stroke-width="3" clip-path="url(#clipRC)"/>
+
+          <!-- Row 3 -->
+          <!-- BL: stroked, clipped inward -->
+          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="#7B72CF" stroke-width="3" clip-path="url(#clipBL)"/>
+          <!-- BC: filled purple -->
+          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="#9B72CF"/>
+          <!-- BR: stroked, clipped inward -->
+          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="#F28B82" stroke-width="3" clip-path="url(#clipBR)"/>
+        </svg>
+        <!-- Mono Version -->
+        <svg class="mono-version" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="mClipTC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
+            <clipPath id="mClipTR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
+            <clipPath id="mClipLC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
+            <clipPath id="mClipC"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
+            <clipPath id="mClipRC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
+            <clipPath id="mClipBL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
+            <clipPath id="mClipBR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
+          </defs>
+
+          <!-- Shortened edges (boundary to boundary) -->
+          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--mono-dark)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
+
+          <!-- Row 1 -->
+          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--mono-light)"/>
+          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--mono-light)" stroke-width="3" clip-path="url(#mClipTC)"/>
+          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipTR)"/>
+          <!-- Row 2 -->
+          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--mono-light)" stroke-width="3" clip-path="url(#mClipLC)"/>
+          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipC)"/>
+          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipRC)"/>
+          <!-- Row 3 -->
+          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipBL)"/>
+          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--mono-mid)"/>
+          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--mono-dark)" stroke-width="3" clip-path="url(#mClipBR)"/>
+        </svg>
+      </div>
+      <h3>Sketch Network</h3>
+      <p>Neural network graph with filled activation nodes, inspired by hand sketch.</p>
+    </div>
+
   </div>
 
   <script>
