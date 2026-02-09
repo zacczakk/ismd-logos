@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,39 +89,84 @@
 
     /* Toggle Controls */
     .controls {
+      position: sticky;
+      /* Sticky within the anchor */
+      top: 20px;
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
+      /* Left align */
       justify-content: center;
-      gap: 40px;
-      margin-bottom: 20px;
+      gap: 15px;
+      z-index: 1000;
+
+      /* Match .card styling */
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      /* Remove fixed width, let it fit content but with min width */
+      width: auto;
+      min-width: 160px;
+      padding: 20px;
+    }
+
+    /* Dark mode background handled by var(--bg-card) */
+
+    /* Layout Wrapper */
+    .layout-wrapper {
+      position: relative;
+      max-width: 900px;
+      /* Reduced from 1200px to force wider 2-col tiles */
+      margin: 0 auto;
+    }
+
+    /* Controls Anchor - positions the sticky container outside the grid */
+    .controls-anchor {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      /* Start at the right edge of the wrapper */
+      margin-left: 30px;
+      /* Same gap as grid (30px) */
+      height: 100%;
+      /* Full height to allow sticky behavior */
+    }
+
+    /* Ensure it doesn't cause horizontal scroll or overlap on small screens */
+    @media (max-width: 1450px) {
+      .controls-anchor {
+        display: none;
+        /* Hide on smaller screens or adjust as needed */
+      }
+
+      /* Fallback for small screens? User didn't ask, but hiding is safer than breaking layout. 
+         Actually, let's keep it simple as requested. */
     }
 
     .toggle-row {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      /* Left align */
       gap: 12px;
+      width: 100%;
     }
 
     .toggle-row span {
       font-size: 0.9rem;
       color: var(--text-secondary);
-      min-width: 60px;
-    }
-
-    .toggle-row span:first-child {
-      text-align: right;
-    }
-
-    .toggle-row span:last-child {
-      text-align: left;
+      /* Remove min-width and text-align hacks */
     }
 
     .toggle-switch {
       position: relative;
-      width: 60px;
-      height: 30px;
+      width: 40px;
+      height: 20px;
       background: linear-gradient(135deg, #4285F4, #9B72CF);
       border-radius: 15px;
       cursor: pointer;
@@ -138,10 +184,10 @@
     .toggle-switch::before {
       content: '';
       position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 24px;
-      height: 24px;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
       background: white;
       border-radius: 50%;
       transition: transform 0.3s ease;
@@ -149,18 +195,21 @@
     }
 
     [data-theme="dark"] .toggle-switch.theme-toggle::before {
-      transform: translateX(30px);
+      transform: translateX(20px);
     }
 
     [data-color="mono"] .toggle-switch.mono-toggle::before {
-      transform: translateX(30px);
+      transform: translateX(20px);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
+      /* Force 2 columns */
       gap: 30px;
-      max-width: 1200px;
+      width: 100%;
+      /* Ensure it spans the wrapper */
+      /* Remove max-width here as it's controlled by wrapper */
       margin: 0 auto;
     }
 
@@ -194,8 +243,14 @@
     }
 
     .logo-container svg {
+      width: 100%;
+      height: 100%;
       max-width: 280px;
       max-height: 120px;
+      display: block;
+      /* Remove default inline spacing */
+      object-fit: contain;
+      /* Ensure aspect ratio is kept inside flex container */
     }
 
     .card h3 {
@@ -234,15 +289,19 @@
     }
 
     /* Monochrome mode - hide gradient versions, show mono versions */
-    .mono-version {
+    .logo-container .gradient-version {
+      display: block;
+    }
+
+    .logo-container .mono-version {
       display: none;
     }
 
-    [data-color="mono"] .gradient-version {
+    [data-color="mono"] .logo-container .gradient-version {
       display: none;
     }
 
-    [data-color="mono"] .mono-version {
+    [data-color="mono"] .logo-container .mono-version {
       display: block;
     }
 
@@ -264,6 +323,7 @@
       --h-accent: #009D81;
       --h-secondary: #48484c;
     }
+
     /* Gradient + Dark */
     [data-theme="dark"] {
       --b-accent: #5B7AE8;
@@ -281,6 +341,7 @@
       --h-accent: #009D81;
       --h-secondary: #b8b8bc;
     }
+
     /* Mono + Light */
     [data-color="mono"] {
       --b-accent: #3a3a3e;
@@ -298,6 +359,7 @@
       --h-accent: #3a3a3e;
       --h-secondary: #909094;
     }
+
     /* Mono + Dark */
     [data-theme="dark"][data-color="mono"] {
       --b-accent: #b8b8bc;
@@ -317,29 +379,20 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Structural Analysis Intelligence</h1>
     <p class="subtitle">Logo Design Concepts</p>
-    
-    <div class="controls">
-      <div class="toggle-row">
-        <span>Light</span>
-        <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="button" tabindex="0" aria-label="Toggle dark mode"></div>
-        <span>Dark</span>
-      </div>
-      <div class="toggle-row">
-        <span>Gradient</span>
-        <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="button" tabindex="0" aria-label="Toggle monochrome"></div>
-        <span>Mono</span>
-      </div>
-    </div>
+
+
   </header>
 
-  <div class="grid">
+  <div class="layout-wrapper">
+    <div class="grid">
 
-    <!-- Variation A: Sketch Network (was Design I in v2) -->
-    <!--
+      <!-- Variation A: Sketch Network (was Design I in v2) -->
+      <!--
       3x3 hex grid with filled nodes and short graph edges.
       3x3 grid with top-left and bottom-center hexagons filled.
       To ensure uniform outer dimensions (pointy corners, same size):
@@ -367,419 +420,704 @@
         7. BC -> BR   horizontal  (26.20,35.00) -> (29.80,35.00)
         8. TR -> RC   vertical    (35.00,13.00) -> (35.00,15.00)
     -->
-    <div class="card">
-      <span class="variation-number">A</span>
-      <div class="logo-container">
-        <!-- Gradient Version -->
-        <svg class="gradient-version" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <!-- Clip paths: one per stroked hex, all using the same r=6 polygon -->
-            <clipPath id="clipA-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipA-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipA-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipA-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipA-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipA-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipA-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
+      <div class="card">
+        <span class="variation-number">A</span>
+        <div class="logo-container">
+          <!-- Gradient Version -->
+          <svg class="gradient-version" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Clip paths: one per stroked hex, all using the same r=6 polygon -->
+              <clipPath id="clipA-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipA-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipA-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipA-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipA-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipA-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipA-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
 
-          <!-- Shortened edges (boundary to boundary) -->
-          <!-- 1. TL->C diagonal -->
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="#6B5DD3" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 2. TC->TR horizontal -->
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 3. C->TR diagonal -->
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 4. LC->C horizontal -->
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 5. BL->LC vertical -->
-          <line x1="7" y1="29" x2="7" y2="27" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 6. BC->RC diagonal -->
-          <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="#B87A95" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 7. BC->BR horizontal -->
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="#C87F8A" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- 8. TR->RC vertical -->
-          <line x1="35" y1="13" x2="35" y2="15" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Shortened edges (boundary to boundary) -->
+            <!-- 1. TL->C diagonal -->
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="#6B5DD3" stroke-width="1.5"
+              stroke-linecap="round" />
+            <!-- 2. TC->TR horizontal -->
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round" />
+            <!-- 3. C->TR diagonal -->
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="#7B72CF" stroke-width="1.5"
+              stroke-linecap="round" />
+            <!-- 4. LC->C horizontal -->
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="#5B7AE8" stroke-width="1.5" stroke-linecap="round" />
+            <!-- 5. BL->LC vertical -->
+            <line x1="7" y1="29" x2="7" y2="27" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round" />
+            <!-- 6. BC->RC diagonal -->
+            <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="#B87A95" stroke-width="1.5"
+              stroke-linecap="round" />
+            <!-- 7. BC->BR horizontal -->
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="#C87F8A" stroke-width="1.5" stroke-linecap="round" />
+            <!-- 8. TR->RC vertical -->
+            <line x1="35" y1="13" x2="35" y2="15" stroke="#7B72CF" stroke-width="1.5" stroke-linecap="round" />
 
-          <!-- Row 1 -->
-          <!-- TL: filled blue -->
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="#4285F4"/>
-          <!-- TC: stroked, clipped inward (stroke-width=3, visible=1.5) -->
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="#5B7AE8" stroke-width="3" clip-path="url(#clipA-TC)"/>
-          <!-- TR: stroked, clipped inward -->
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="#7B72CF" stroke-width="3" clip-path="url(#clipA-TR)"/>
+            <!-- Row 1 -->
+            <!-- TL: filled blue -->
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="#4285F4" />
+            <!-- TC: stroked, clipped inward (stroke-width=3, visible=1.5) -->
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="#5B7AE8" stroke-width="3"
+              clip-path="url(#clipA-TC)" />
+            <!-- TR: stroked, clipped inward -->
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="#7B72CF" stroke-width="3"
+              clip-path="url(#clipA-TR)" />
 
-          <!-- Row 2 -->
-          <!-- LC: stroked, clipped inward -->
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="#5B7AE8" stroke-width="3" clip-path="url(#clipA-LC)"/>
-          <!-- C: stroked, clipped inward -->
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="#9B72CF" stroke-width="3" clip-path="url(#clipA-C)"/>
-          <!-- RC: stroked, clipped inward -->
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="#B87A95" stroke-width="3" clip-path="url(#clipA-RC)"/>
+            <!-- Row 2 -->
+            <!-- LC: stroked, clipped inward -->
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="#5B7AE8" stroke-width="3"
+              clip-path="url(#clipA-LC)" />
+            <!-- C: stroked, clipped inward -->
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="#9B72CF"
+              stroke-width="3" clip-path="url(#clipA-C)" />
+            <!-- RC: stroked, clipped inward -->
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="#B87A95"
+              stroke-width="3" clip-path="url(#clipA-RC)" />
 
-          <!-- Row 3 -->
-          <!-- BL: stroked, clipped inward -->
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="#7B72CF" stroke-width="3" clip-path="url(#clipA-BL)"/>
-          <!-- BC: filled purple -->
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="#9B72CF"/>
-          <!-- BR: stroked, clipped inward -->
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="#F28B82" stroke-width="3" clip-path="url(#clipA-BR)"/>
+            <!-- Row 3 -->
+            <!-- BL: stroked, clipped inward -->
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="#7B72CF" stroke-width="3"
+              clip-path="url(#clipA-BL)" />
+            <!-- BC: filled purple -->
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="#9B72CF" />
+            <!-- BR: stroked, clipped inward -->
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="#F28B82"
+              stroke-width="3" clip-path="url(#clipA-BR)" />
 
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
 
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-        <!-- Mono Version -->
-        <svg class="mono-version" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="mClipA-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="mClipA-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="mClipA-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="mClipA-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="mClipA-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="mClipA-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="mClipA-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+          <!-- Mono Version -->
+          <svg class="mono-version" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="mClipA-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="mClipA-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="mClipA-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="mClipA-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="mClipA-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="mClipA-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="mClipA-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
 
-          <!-- Shortened edges (boundary to boundary) -->
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--mono-light)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--mono-dark)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Shortened edges (boundary to boundary) -->
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--mono-light)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--mono-light)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--mono-mid)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--mono-light)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="24.80" y1="31.20" x2="31.20" y2="24.80" stroke="var(--mono-mid)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--mono-dark)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--mono-mid)" stroke-width="1.5" stroke-linecap="round" />
 
-          <!-- Row 1 -->
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--mono-light)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--mono-light)" stroke-width="3" clip-path="url(#mClipA-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipA-TR)"/>
-          <!-- Row 2 -->
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--mono-light)" stroke-width="3" clip-path="url(#mClipA-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipA-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipA-RC)"/>
-          <!-- Row 3 -->
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--mono-mid)" stroke-width="3" clip-path="url(#mClipA-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--mono-mid)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--mono-dark)" stroke-width="3" clip-path="url(#mClipA-BR)"/>
+            <!-- Row 1 -->
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--mono-light)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--mono-light)"
+              stroke-width="3" clip-path="url(#mClipA-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--mono-mid)"
+              stroke-width="3" clip-path="url(#mClipA-TR)" />
+            <!-- Row 2 -->
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--mono-light)"
+              stroke-width="3" clip-path="url(#mClipA-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--mono-mid)"
+              stroke-width="3" clip-path="url(#mClipA-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--mono-mid)"
+              stroke-width="3" clip-path="url(#mClipA-RC)" />
+            <!-- Row 3 -->
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--mono-mid)"
+              stroke-width="3" clip-path="url(#mClipA-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--mono-mid)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--mono-dark)"
+              stroke-width="3" clip-path="url(#mClipA-BR)" />
 
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
 
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>Sketch Network</h3>
+        <p>Neural network graph with filled activation nodes, inspired by hand sketch.</p>
       </div>
-      <h3>Sketch Network</h3>
-      <p>Neural network graph with filled activation nodes, inspired by hand sketch.</p>
+
+      <!-- Variation B: accent #5B7AE8 (blue-purple) -->
+      <div class="card">
+        <span class="variation-number">B</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipB-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipB-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipB-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipB-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipB-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipB-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipB-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--b-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--b-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--b-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--b-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--b-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--b-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--b-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--b-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--b-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--b-secondary)"
+              stroke-width="3" clip-path="url(#clipB-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--b-accent)"
+              stroke-width="3" clip-path="url(#clipB-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--b-secondary)"
+              stroke-width="3" clip-path="url(#clipB-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--b-accent)"
+              stroke-width="3" clip-path="url(#clipB-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--b-accent)"
+              stroke-width="3" clip-path="url(#clipB-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--b-secondary)"
+              stroke-width="3" clip-path="url(#clipB-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--b-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--b-secondary)"
+              stroke-width="3" clip-path="url(#clipB-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>Blue-Purple Accent</h3>
+        <p>Path of knowledge with #5B7AE8 blue-purple accent.</p>
+      </div>
+
+      <!-- Variation C: accent #7B72CF (purple-blue) -->
+      <div class="card">
+        <span class="variation-number">C</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipC-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipC-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipC-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipC-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipC-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipC-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipC-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--c-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--c-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--c-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--c-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--c-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--c-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--c-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--c-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--c-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--c-secondary)"
+              stroke-width="3" clip-path="url(#clipC-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--c-accent)"
+              stroke-width="3" clip-path="url(#clipC-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--c-secondary)"
+              stroke-width="3" clip-path="url(#clipC-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--c-accent)"
+              stroke-width="3" clip-path="url(#clipC-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--c-accent)"
+              stroke-width="3" clip-path="url(#clipC-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--c-secondary)"
+              stroke-width="3" clip-path="url(#clipC-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--c-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--c-secondary)"
+              stroke-width="3" clip-path="url(#clipC-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>Purple-Blue Accent</h3>
+        <p>Path of knowledge with #7B72CF purple-blue accent.</p>
+      </div>
+
+      <!-- Variation D: accent #9B72CF (purple) -->
+      <div class="card">
+        <span class="variation-number">D</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipD-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipD-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipD-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipD-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipD-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipD-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipD-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--d-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--d-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--d-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--d-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--d-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--d-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--d-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--d-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--d-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--d-secondary)"
+              stroke-width="3" clip-path="url(#clipD-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--d-accent)"
+              stroke-width="3" clip-path="url(#clipD-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--d-secondary)"
+              stroke-width="3" clip-path="url(#clipD-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--d-accent)"
+              stroke-width="3" clip-path="url(#clipD-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--d-accent)"
+              stroke-width="3" clip-path="url(#clipD-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--d-secondary)"
+              stroke-width="3" clip-path="url(#clipD-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--d-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--d-secondary)"
+              stroke-width="3" clip-path="url(#clipD-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>Purple Accent</h3>
+        <p>Path of knowledge with #9B72CF purple accent.</p>
+      </div>
+
+      <!-- Variation E: accent #B87A95 (mauve) -->
+      <div class="card">
+        <span class="variation-number">E</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipE-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipE-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipE-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipE-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipE-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipE-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipE-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--e-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--e-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--e-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--e-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--e-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--e-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--e-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--e-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--e-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--e-secondary)"
+              stroke-width="3" clip-path="url(#clipE-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--e-accent)"
+              stroke-width="3" clip-path="url(#clipE-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--e-secondary)"
+              stroke-width="3" clip-path="url(#clipE-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--e-accent)"
+              stroke-width="3" clip-path="url(#clipE-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--e-accent)"
+              stroke-width="3" clip-path="url(#clipE-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--e-secondary)"
+              stroke-width="3" clip-path="url(#clipE-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--e-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--e-secondary)"
+              stroke-width="3" clip-path="url(#clipE-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>Mauve Accent</h3>
+        <p>Path of knowledge with #B87A95 mauve accent.</p>
+      </div>
+
+      <!-- Variation F: accent #F28B82 (coral) -->
+      <div class="card">
+        <span class="variation-number">F</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipF-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipF-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipF-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipF-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipF-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipF-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipF-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--f-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--f-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--f-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--f-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--f-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--f-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--f-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--f-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--f-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--f-secondary)"
+              stroke-width="3" clip-path="url(#clipF-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--f-accent)"
+              stroke-width="3" clip-path="url(#clipF-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--f-secondary)"
+              stroke-width="3" clip-path="url(#clipF-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--f-accent)"
+              stroke-width="3" clip-path="url(#clipF-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--f-accent)"
+              stroke-width="3" clip-path="url(#clipF-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--f-secondary)"
+              stroke-width="3" clip-path="url(#clipF-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--f-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--f-secondary)"
+              stroke-width="3" clip-path="url(#clipF-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>Coral Accent</h3>
+        <p>Path of knowledge with #F28B82 coral accent.</p>
+      </div>
+
+      <!-- Variation G: accent #005AA9 (ISM+D blue) -->
+      <div class="card">
+        <span class="variation-number">G</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipG-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipG-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipG-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipG-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipG-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipG-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipG-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--g-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--g-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--g-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--g-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--g-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--g-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--g-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--g-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--g-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--g-secondary)"
+              stroke-width="3" clip-path="url(#clipG-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--g-accent)"
+              stroke-width="3" clip-path="url(#clipG-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--g-secondary)"
+              stroke-width="3" clip-path="url(#clipG-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--g-accent)"
+              stroke-width="3" clip-path="url(#clipG-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--g-accent)"
+              stroke-width="3" clip-path="url(#clipG-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--g-secondary)"
+              stroke-width="3" clip-path="url(#clipG-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--g-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--g-secondary)"
+              stroke-width="3" clip-path="url(#clipG-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>ISM+D Accent</h3>
+        <p>Path of knowledge with #005AA9 ISM+D blue accent.</p>
+      </div>
+
+      <!-- Variation H: accent #009D81 (tud3b teal) -->
+      <div class="card">
+        <span class="variation-number">H</span>
+        <div class="logo-container">
+          <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clipH-TC">
+                <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" />
+              </clipPath>
+              <clipPath id="clipH-TR">
+                <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" />
+              </clipPath>
+              <clipPath id="clipH-LC">
+                <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" />
+              </clipPath>
+              <clipPath id="clipH-C">
+                <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" />
+              </clipPath>
+              <clipPath id="clipH-RC">
+                <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" />
+              </clipPath>
+              <clipPath id="clipH-BL">
+                <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" />
+              </clipPath>
+              <clipPath id="clipH-BR">
+                <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" />
+              </clipPath>
+            </defs>
+            <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--h-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--h-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="35" y1="13" x2="35" y2="15" stroke="var(--h-accent)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--h-accent)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--h-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--h-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <line x1="7" y1="29" x2="7" y2="27" stroke="var(--h-secondary)" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--h-secondary)" stroke-width="1.5"
+              stroke-linecap="round" />
+            <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--h-accent)" />
+            <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--h-secondary)"
+              stroke-width="3" clip-path="url(#clipH-TC)" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--h-accent)"
+              stroke-width="3" clip-path="url(#clipH-TR)" />
+            <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--h-secondary)"
+              stroke-width="3" clip-path="url(#clipH-LC)" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--h-accent)"
+              stroke-width="3" clip-path="url(#clipH-C)" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--h-accent)"
+              stroke-width="3" clip-path="url(#clipH-RC)" />
+            <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--h-secondary)"
+              stroke-width="3" clip-path="url(#clipH-BL)" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--h-accent)" />
+            <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--h-secondary)"
+              stroke-width="3" clip-path="url(#clipH-BR)" />
+            <!-- Divider -->
+            <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4" />
+            <!-- Text: Structural / Analysis / Intelligence -->
+            <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Structural</text>
+            <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Analysis</text>
+            <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12"
+              fill="var(--svg-text)">Intelligence</text>
+          </svg>
+        </div>
+        <h3>TUD3b Accent</h3>
+        <p>Path of knowledge with #009D81 tud3b teal accent.</p>
+      </div>
+
     </div>
 
-    <!-- Variation B: accent #5B7AE8 (blue-purple) -->
-    <div class="card">
-      <span class="variation-number">B</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipB-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipB-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipB-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipB-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipB-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipB-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipB-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--b-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--b-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--b-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--b-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--b-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--b-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--b-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--b-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--b-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--b-secondary)" stroke-width="3" clip-path="url(#clipB-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--b-accent)" stroke-width="3" clip-path="url(#clipB-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--b-secondary)" stroke-width="3" clip-path="url(#clipB-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--b-accent)" stroke-width="3" clip-path="url(#clipB-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--b-accent)" stroke-width="3" clip-path="url(#clipB-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--b-secondary)" stroke-width="3" clip-path="url(#clipB-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--b-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--b-secondary)" stroke-width="3" clip-path="url(#clipB-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
+    <!-- Controls Floating on the Right -->
+    <div class="controls-anchor">
+      <div class="controls">
+        <div class="toggle-row">
+          <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="button" tabindex="0"
+            aria-label="Toggle dark mode"></div>
+          <span>Light/Dark</span>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="button" tabindex="0"
+            aria-label="Toggle monochrome"></div>
+          <span>Color/Mono</span>
+        </div>
       </div>
-      <h3>Blue-Purple Accent</h3>
-      <p>Path of knowledge with #5B7AE8 blue-purple accent.</p>
-    </div>
-
-    <!-- Variation C: accent #7B72CF (purple-blue) -->
-    <div class="card">
-      <span class="variation-number">C</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipC-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipC-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipC-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipC-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipC-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipC-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipC-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--c-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--c-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--c-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--c-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--c-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--c-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--c-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--c-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--c-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--c-secondary)" stroke-width="3" clip-path="url(#clipC-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--c-accent)" stroke-width="3" clip-path="url(#clipC-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--c-secondary)" stroke-width="3" clip-path="url(#clipC-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--c-accent)" stroke-width="3" clip-path="url(#clipC-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--c-accent)" stroke-width="3" clip-path="url(#clipC-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--c-secondary)" stroke-width="3" clip-path="url(#clipC-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--c-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--c-secondary)" stroke-width="3" clip-path="url(#clipC-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-      </div>
-      <h3>Purple-Blue Accent</h3>
-      <p>Path of knowledge with #7B72CF purple-blue accent.</p>
-    </div>
-
-    <!-- Variation D: accent #9B72CF (purple) -->
-    <div class="card">
-      <span class="variation-number">D</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipD-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipD-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipD-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipD-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipD-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipD-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipD-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--d-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--d-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--d-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--d-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--d-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--d-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--d-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--d-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--d-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--d-secondary)" stroke-width="3" clip-path="url(#clipD-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--d-accent)" stroke-width="3" clip-path="url(#clipD-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--d-secondary)" stroke-width="3" clip-path="url(#clipD-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--d-accent)" stroke-width="3" clip-path="url(#clipD-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--d-accent)" stroke-width="3" clip-path="url(#clipD-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--d-secondary)" stroke-width="3" clip-path="url(#clipD-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--d-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--d-secondary)" stroke-width="3" clip-path="url(#clipD-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-      </div>
-      <h3>Purple Accent</h3>
-      <p>Path of knowledge with #9B72CF purple accent.</p>
-    </div>
-
-    <!-- Variation E: accent #B87A95 (mauve) -->
-    <div class="card">
-      <span class="variation-number">E</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipE-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipE-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipE-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipE-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipE-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipE-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipE-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--e-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--e-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--e-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--e-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--e-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--e-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--e-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--e-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--e-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--e-secondary)" stroke-width="3" clip-path="url(#clipE-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--e-accent)" stroke-width="3" clip-path="url(#clipE-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--e-secondary)" stroke-width="3" clip-path="url(#clipE-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--e-accent)" stroke-width="3" clip-path="url(#clipE-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--e-accent)" stroke-width="3" clip-path="url(#clipE-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--e-secondary)" stroke-width="3" clip-path="url(#clipE-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--e-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--e-secondary)" stroke-width="3" clip-path="url(#clipE-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-      </div>
-      <h3>Mauve Accent</h3>
-      <p>Path of knowledge with #B87A95 mauve accent.</p>
-    </div>
-
-    <!-- Variation F: accent #F28B82 (coral) -->
-    <div class="card">
-      <span class="variation-number">F</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipF-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipF-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipF-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipF-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipF-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipF-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipF-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--f-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--f-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--f-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--f-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--f-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--f-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--f-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--f-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--f-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--f-secondary)" stroke-width="3" clip-path="url(#clipF-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--f-accent)" stroke-width="3" clip-path="url(#clipF-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--f-secondary)" stroke-width="3" clip-path="url(#clipF-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--f-accent)" stroke-width="3" clip-path="url(#clipF-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--f-accent)" stroke-width="3" clip-path="url(#clipF-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--f-secondary)" stroke-width="3" clip-path="url(#clipF-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--f-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--f-secondary)" stroke-width="3" clip-path="url(#clipF-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-      </div>
-      <h3>Coral Accent</h3>
-      <p>Path of knowledge with #F28B82 coral accent.</p>
-    </div>
-
-    <!-- Variation G: accent #005AA9 (ISM+D blue) -->
-    <div class="card">
-      <span class="variation-number">G</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipG-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipG-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipG-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipG-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipG-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipG-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipG-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--g-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--g-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--g-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--g-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--g-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--g-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--g-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--g-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--g-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--g-secondary)" stroke-width="3" clip-path="url(#clipG-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--g-accent)" stroke-width="3" clip-path="url(#clipG-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--g-secondary)" stroke-width="3" clip-path="url(#clipG-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--g-accent)" stroke-width="3" clip-path="url(#clipG-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--g-accent)" stroke-width="3" clip-path="url(#clipG-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--g-secondary)" stroke-width="3" clip-path="url(#clipG-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--g-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--g-secondary)" stroke-width="3" clip-path="url(#clipG-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-      </div>
-      <h3>ISM+D Accent</h3>
-      <p>Path of knowledge with #005AA9 ISM+D blue accent.</p>
-    </div>
-
-    <!-- Variation H: accent #009D81 (tud3b teal) -->
-    <div class="card">
-      <span class="variation-number">H</span>
-      <div class="logo-container">
-        <svg viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="clipH-TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
-            <clipPath id="clipH-TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
-            <clipPath id="clipH-LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
-            <clipPath id="clipH-C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
-            <clipPath id="clipH-RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
-            <clipPath id="clipH-BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
-            <clipPath id="clipH-BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
-          </defs>
-          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" stroke="var(--h-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" stroke="var(--h-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="35" y1="13" x2="35" y2="15" stroke="var(--h-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" stroke="var(--h-accent)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="7" x2="29.80" y2="7" stroke="var(--h-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="12.20" y1="21" x2="15.80" y2="21" stroke="var(--h-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="7" y1="29" x2="7" y2="27" stroke="var(--h-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26.20" y1="35" x2="29.80" y2="35" stroke="var(--h-secondary)" stroke-width="1.5" stroke-linecap="round"/>
-          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="var(--h-accent)"/>
-          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="var(--h-secondary)" stroke-width="3" clip-path="url(#clipH-TC)"/>
-          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="var(--h-accent)" stroke-width="3" clip-path="url(#clipH-TR)"/>
-          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="var(--h-secondary)" stroke-width="3" clip-path="url(#clipH-LC)"/>
-          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="var(--h-accent)" stroke-width="3" clip-path="url(#clipH-C)"/>
-          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="var(--h-accent)" stroke-width="3" clip-path="url(#clipH-RC)"/>
-          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="var(--h-secondary)" stroke-width="3" clip-path="url(#clipH-BL)"/>
-          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="var(--h-accent)"/>
-          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="var(--h-secondary)" stroke-width="3" clip-path="url(#clipH-BR)"/>
-          <!-- Divider -->
-          <line x1="49" y1="1" x2="49" y2="41" stroke="var(--svg-text)" stroke-width="0.5" stroke-opacity="0.4"/>
-          <!-- Text: Structural / Analysis / Intelligence -->
-          <text x="55" y="9.6" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Structural</text>
-          <text x="55" y="24" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Analysis</text>
-          <text x="55" y="38.4" font-family="Poppins, sans-serif" font-weight="300" font-size="12" fill="var(--svg-text)">Intelligence</text>
-        </svg>
-      </div>
-      <h3>TUD3b Accent</h3>
-      <p>Path of knowledge with #009D81 tud3b teal accent.</p>
     </div>
 
   </div>
@@ -821,4 +1159,5 @@
     });
   </script>
 </body>
+
 </html>
