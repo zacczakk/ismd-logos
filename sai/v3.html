@@ -52,7 +52,7 @@
       background: var(--bg-primary);
       min-height: 100vh;
       color: var(--text-primary);
-      padding: 40px 20px;
+      padding: 116px 20px 40px;
       transition: background 0.3s ease, color 0.3s ease;
     }
 
@@ -373,13 +373,6 @@
 </head>
 
 <body>
-  <header>
-    <h1>Structural Analysis Intelligence</h1>
-    <p class="subtitle">Logo Design Concepts</p>
-
-
-  </header>
-
   <div class="layout-wrapper">
     <div class="grid">
 
@@ -1092,17 +1085,25 @@
   </div>
 
   <script>
+    function notifyParentTheme(theme) {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'sai-theme', theme }, '*');
+      }
+    }
+
     // Check for saved preferences or defaults
     const savedTheme = localStorage.getItem('theme') || 'dark';
     const savedColor = localStorage.getItem('color') || 'gradient';
     document.documentElement.setAttribute('data-theme', savedTheme);
     document.documentElement.setAttribute('data-color', savedColor);
+    notifyParentTheme(savedTheme);
 
     function toggleTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      notifyParentTheme(newTheme);
     }
 
     function toggleColor() {

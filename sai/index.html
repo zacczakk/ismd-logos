@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAI Logo Concepts</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f3f5f8;
+      --bar: rgba(255, 255, 255, 0.4);
+      --bar-border: rgba(27, 36, 50, 0.08);
+      --text: #1d2531;
+      --muted: #687489;
+      --button-hover: rgba(50, 72, 99, 0.1);
+      --button-active: linear-gradient(135deg, #4285f4, #9b72cf);
+      --button-active-border: rgba(255, 255, 255, 0.35);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f0f1a;
+      --bar: rgba(255, 255, 255, 0.03);
+      --bar-border: rgba(255, 255, 255, 0.08);
+      --text: #ffffff;
+      --muted: #ccc;
+      --button-hover: rgba(255, 255, 255, 0.1);
+      --button-active-border: rgba(10, 12, 22, 0.5);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .app {
+      display: block;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .menu-bar {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(calc(100% - 24px), 980px);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 18px;
+      background: var(--bar);
+      border: 1px solid var(--bar-border);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(22, 34, 48, 0.14);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    [data-theme="dark"] .menu-bar {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+      padding-left: 8px;
+    }
+
+    .title-main {
+      font-size: 1.02rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #4285f4, #9b72cf, #f28b82);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .title-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .tabs {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      padding: 4px;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .tab-indicator {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      height: calc(100% - 8px);
+      width: 0;
+      border-radius: 999px;
+      background: var(--button-active);
+      border: 1px solid var(--button-active-border);
+      transition: transform 0.28s ease, width 0.28s ease;
+      z-index: 0;
+    }
+
+    .tab {
+      appearance: none;
+      position: relative;
+      z-index: 1;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab:hover {
+      background: var(--button-hover);
+    }
+
+    .tab:active {
+      transform: translateY(1px);
+    }
+
+    .tab[aria-selected="true"] {
+      background: transparent;
+      border-color: transparent;
+      color: #ffffff;
+    }
+
+    .content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    .viewer {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+      display: block;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+    }
+
+    .viewer.is-switching {
+      opacity: 0;
+    }
+
+    @media (max-width: 760px) {
+      .menu-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tabs {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="menu-bar">
+      <div class="title" aria-label="Page title">
+        <span class="title-main">Structural Analysis Intelligence</span>
+        <span class="title-sub">Logo Design Concepts</span>
+      </div>
+
+      <nav class="tabs" role="tablist" aria-label="Logo color views">
+        <span class="tab-indicator" aria-hidden="true"></span>
+        <button class="tab" id="tab-v3" role="tab" aria-selected="true" aria-controls="viewer" data-src="v3.html">
+          Gradient Colors
+        </button>
+        <button class="tab" id="tab-v4" role="tab" aria-selected="false" aria-controls="viewer" data-src="v4.html">
+          TUD Colors
+        </button>
+      </nav>
+    </header>
+
+    <main class="content">
+      <iframe
+        id="viewer"
+        class="viewer"
+        title="SAI logo view"
+        src="v3.html"
+        loading="eager"
+      ></iframe>
+    </main>
+  </div>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const viewer = document.getElementById("viewer");
+    const tabsWrap = document.querySelector(".tabs");
+    const indicator = document.querySelector(".tab-indicator");
+    const STORAGE_KEY = "saiLogoView";
+
+    let activeTab = null;
+    let switchTimer = null;
+    let themeObserver = null;
+
+    function applyShellTheme(theme) {
+      const safeTheme = theme === "light" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", safeTheme);
+    }
+
+    function readThemeFromViewer() {
+      let theme = null;
+      try {
+        theme = viewer.contentDocument?.documentElement?.getAttribute("data-theme");
+      } catch {
+        theme = null;
+      }
+      if (!theme) {
+        theme = localStorage.getItem("theme") || "dark";
+      }
+      applyShellTheme(theme);
+    }
+
+    function syncThemeFromStorage() {
+      applyShellTheme(localStorage.getItem("theme") || "dark");
+    }
+
+    function bindViewerThemeObserver() {
+      if (themeObserver) {
+        themeObserver.disconnect();
+      }
+      try {
+        const viewerRoot = viewer.contentDocument?.documentElement;
+        if (!viewerRoot) {
+          readThemeFromViewer();
+          return;
+        }
+
+        readThemeFromViewer();
+        themeObserver = new MutationObserver(() => {
+          readThemeFromViewer();
+        });
+        themeObserver.observe(viewerRoot, {
+          attributes: true,
+          attributeFilter: ["data-theme"]
+        });
+      } catch {
+        readThemeFromViewer();
+      }
+    }
+
+    function moveIndicator(tab) {
+      const x = tab.offsetLeft;
+      indicator.style.width = `${tab.offsetWidth}px`;
+      indicator.style.transform = `translateX(${x}px)`;
+    }
+
+    function activateTab(nextTab, options = { animate: true }) {
+      activeTab = nextTab;
+      tabs.forEach((tab) => {
+        const selected = tab === nextTab;
+        tab.setAttribute("aria-selected", selected ? "true" : "false");
+      });
+
+      moveIndicator(nextTab);
+
+      const src = nextTab.dataset.src;
+      if (viewer.getAttribute("src") !== src) {
+        if (switchTimer) {
+          window.clearTimeout(switchTimer);
+          switchTimer = null;
+        }
+
+        if (options.animate) {
+          viewer.classList.add("is-switching");
+          switchTimer = window.setTimeout(() => {
+            viewer.setAttribute("src", src);
+            switchTimer = null;
+          }, 120);
+        } else {
+          viewer.classList.remove("is-switching");
+          viewer.setAttribute("src", src);
+        }
+      }
+
+      localStorage.setItem(STORAGE_KEY, src);
+    }
+
+    viewer.addEventListener("load", () => {
+      switchTimer = null;
+      viewer.classList.remove("is-switching");
+      bindViewerThemeObserver();
+    });
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activateTab(tab));
+      tab.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activateTab(tab);
+        }
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (activeTab) {
+        moveIndicator(activeTab);
+      }
+    });
+
+    window.addEventListener("storage", (event) => {
+      if (!event.key || event.key === "theme") {
+        syncThemeFromStorage();
+      }
+    });
+
+    window.addEventListener("focus", syncThemeFromStorage);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        syncThemeFromStorage();
+      }
+    });
+
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (data && data.type === "sai-theme") {
+        applyShellTheme(data.theme);
+      }
+    });
+
+    const stored = localStorage.getItem(STORAGE_KEY);
+    const initialTab = tabs.find((tab) => tab.dataset.src === stored) || tabs[0];
+    syncThemeFromStorage();
+    activateTab(initialTab, { animate: false });
+    window.setTimeout(bindViewerThemeObserver, 0);
+  </script>
+</body>
+</html>
