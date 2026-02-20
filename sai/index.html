@@ -188,7 +188,7 @@
       width: 100%;
       height: 100%;
       border: 0;
-      background: #fff;
+      background: var(--bg);
       display: block;
       opacity: 1;
       transition: opacity 0.2s ease;
@@ -324,8 +324,10 @@
     }
 
     function moveIndicator(tab) {
-      const x = tab.offsetLeft;
-      indicator.style.width = `${tab.offsetWidth}px`;
+      const horizontalInset = 1;
+      const x = tab.offsetLeft + horizontalInset;
+      const width = Math.max(0, tab.offsetWidth - horizontalInset * 2);
+      indicator.style.width = `${width}px`;
       indicator.style.transform = `translateX(${x}px)`;
     }
 

@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SAI Logo Final Selection - TUD1B</title>
+  <script>
+    (() => {
+      let theme = "dark";
+      let color = "gradient";
+      try {
+        theme = localStorage.getItem("theme") || "dark";
+        color = localStorage.getItem("color") || "gradient";
+      } catch {
+        theme = "dark";
+        color = "gradient";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.setAttribute("data-color", color);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
