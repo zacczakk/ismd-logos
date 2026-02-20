@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f3f5f8">
+  <meta name="color-scheme" content="light dark">
+  <meta id="theme-color-meta" name="theme-color" content="#0f0f1a">
+  <meta id="apple-status-bar-meta" name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>SAI Logo Concepts</title>
+  <script>
+    (() => {
+      const theme = localStorage.getItem("theme") === "light" ? "light" : "dark";
+      const color = theme === "light" ? "#f3f5f8" : "#0f0f1a";
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.style.colorScheme = theme;
+
+      const themeMeta = document.getElementById("theme-color-meta");
+      if (themeMeta) {
+        themeMeta.setAttribute("content", color);
+      }
+
+      const appleMeta = document.getElementById("apple-status-bar-meta");
+      if (appleMeta) {
+        appleMeta.setAttribute("content", theme === "light" ? "default" : "black-translucent");
+      }
+    })();
+  </script>
   <style>
     * {
       box-sizing: border-box;
@@ -39,6 +59,10 @@
       color: var(--text);
       min-height: 100vh;
       transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    html {
+      background: var(--bg);
     }
 
     .app {
@@ -113,6 +137,7 @@
       left: 0;
       height: calc(100% - 8px);
       width: 0;
+      box-sizing: border-box;
       border-radius: 999px;
       background: var(--button-active);
       border: 1px solid var(--button-active-border);
@@ -190,6 +215,7 @@
       .tabs {
         width: auto;
         justify-content: center;
+        padding: 4px 6px;
       }
     }
   </style>
@@ -235,18 +261,24 @@
     let activeTab = null;
     let switchTimer = null;
     let themeObserver = null;
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
     function syncBrowserChromeColor(theme) {
-      if (!themeColorMeta) {
-        return;
+      const color = theme === "light" ? "#f3f5f8" : "#0f0f1a";
+
+      const themeMeta = document.getElementById("theme-color-meta");
+      if (themeMeta) {
+        themeMeta.setAttribute("content", color);
       }
-      themeColorMeta.setAttribute("content", theme === "light" ? "#f3f5f8" : "#0f0f1a");
+
+      const appleMeta = document.getElementById("apple-status-bar-meta");
+      if (appleMeta) {
+        appleMeta.setAttribute("content", theme === "light" ? "default" : "black-translucent");
+      }
     }
 
     function applyShellTheme(theme) {
       const safeTheme = theme === "light" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", safeTheme);
+      document.documentElement.style.colorScheme = safeTheme;
       syncBrowserChromeColor(safeTheme);
     }
 
