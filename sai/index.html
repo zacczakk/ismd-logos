@@ -215,7 +215,7 @@
       .tabs {
         width: auto;
         justify-content: center;
-        padding: 4px 6px;
+        padding: 4px 8px;
       }
     }
   </style>
@@ -324,9 +324,17 @@
     }
 
     function moveIndicator(tab) {
-      const horizontalInset = 1;
-      const x = tab.offsetLeft + horizontalInset;
-      const width = Math.max(0, tab.offsetWidth - horizontalInset * 2);
+      const tabsRect = tabsWrap.getBoundingClientRect();
+      const tabRect = tab.getBoundingClientRect();
+      const isMobile = window.matchMedia("(max-width: 760px)").matches;
+      const horizontalInset = isMobile ? 2 : 1;
+
+      const rawX = tabRect.left - tabsRect.left + horizontalInset;
+      const x = Math.max(horizontalInset, rawX);
+      const rawWidth = tabRect.width - horizontalInset * 2;
+      const maxWidth = Math.max(0, tabsRect.width - x - horizontalInset);
+      const width = Math.max(0, Math.min(rawWidth, maxWidth));
+
       indicator.style.width = `${width}px`;
       indicator.style.transform = `translateX(${x}px)`;
     }
