@@ -10,7 +10,7 @@
   <script>
     (() => {
       const theme = localStorage.getItem("theme") === "light" ? "light" : "dark";
-      const color = theme === "light" ? "#f3f5f8" : "#0f0f1a";
+      const color = theme === "light" ? "#ffffff" : "#0f0f1a";
       document.documentElement.setAttribute("data-theme", theme);
       document.documentElement.style.colorScheme = theme;
 
@@ -33,7 +33,7 @@
     }
 
     :root {
-      --bg: #f3f5f8;
+      --bg: #ffffff;
       --bar: rgba(255, 255, 255, 0.4);
       --bar-border: rgba(27, 36, 50, 0.08);
       --text: #1d2531;
@@ -225,6 +225,11 @@
         font-size: 0.82rem;
       }
 
+      #tab-v5 {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
       .tab-indicator {
         border: 0;
         box-shadow: inset 0 0 0 1px var(--button-active-border);
@@ -274,7 +279,7 @@
     let switchTimer = null;
     let themeObserver = null;
     function syncBrowserChromeColor(theme) {
-      const color = theme === "light" ? "#f3f5f8" : "#0f0f1a";
+      const color = theme === "light" ? "#ffffff" : "#0f0f1a";
 
       const themeMeta = document.getElementById("theme-color-meta");
       if (themeMeta) {
@@ -339,7 +344,7 @@
       const tabsRect = tabsWrap.getBoundingClientRect();
       const tabRect = tab.getBoundingClientRect();
       const isMobile = window.matchMedia("(max-width: 760px)").matches;
-      const horizontalInset = isMobile ? 2 : 1;
+      const horizontalInset = isMobile ? 1 : 1;
 
       const rawX = tabRect.left - tabsRect.left + horizontalInset;
       const x = Math.max(horizontalInset, rawX);
