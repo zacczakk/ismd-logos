@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f5f8">
   <title>SAI Logo Concepts</title>
   <style>
     * {
@@ -234,10 +235,19 @@
     let activeTab = null;
     let switchTimer = null;
     let themeObserver = null;
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+    function syncBrowserChromeColor(theme) {
+      if (!themeColorMeta) {
+        return;
+      }
+      themeColorMeta.setAttribute("content", theme === "light" ? "#f3f5f8" : "#0f0f1a");
+    }
 
     function applyShellTheme(theme) {
       const safeTheme = theme === "light" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", safeTheme);
+      syncBrowserChromeColor(safeTheme);
     }
 
     function readThemeFromViewer() {
