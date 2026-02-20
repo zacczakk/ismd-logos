@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAI Logo Final Selection - TUD1B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-card: #ffffff;
+      --text-primary: #1a1a2e;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --border-color: #e0e0e0;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --svg-text: #1a1a2e;
+      --logo-secondary: #48484c;
+      --mono-accent: #3a3a3e;
+      --mono-secondary: #909094;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f0f1a;
+      --bg-secondary: #1a1a2e;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --text-primary: #ffffff;
+      --text-secondary: #ccc;
+      --text-muted: #888;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --svg-text: #ffffff;
+      --logo-secondary: #b8b8bc;
+      --mono-accent: #b8b8bc;
+      --mono-secondary: #606064;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg-primary);
+      min-height: 100vh;
+      color: var(--text-primary);
+      padding: 116px 20px 40px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .layout-wrapper {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    [data-theme="dark"] .card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="light"][data-color="gradient"] .card.light-secondary-boost {
+      --logo-secondary: var(--light-secondary-color);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .variation-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #4285f4, #9b72cf);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    [data-color="mono"] .variation-number {
+      background: var(--mono-accent);
+    }
+
+    .logo-container {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-svg {
+      width: 100%;
+      height: 100%;
+      max-width: 280px;
+      max-height: 120px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .logo-svg .edge-accent {
+      stroke: var(--accent-color);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .logo-svg .acc-fill {
+      fill: var(--accent-color);
+    }
+
+    .logo-svg .edge-secondary {
+      stroke: var(--logo-secondary);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .logo-svg .hex-accent {
+      fill: none;
+      stroke: var(--accent-color);
+      stroke-width: 3;
+    }
+
+    .logo-svg .hex-secondary {
+      fill: none;
+      stroke: var(--logo-secondary);
+      stroke-width: 3;
+    }
+
+    [data-color="mono"] .logo-svg .edge-accent {
+      stroke: var(--mono-accent);
+    }
+
+    [data-color="mono"] .logo-svg .acc-fill {
+      fill: var(--mono-accent);
+    }
+
+    [data-color="mono"] .logo-svg .edge-secondary {
+      stroke: var(--mono-secondary);
+    }
+
+    [data-color="mono"] .logo-svg .hex-accent {
+      stroke: var(--mono-accent);
+    }
+
+    [data-color="mono"] .logo-svg .hex-secondary {
+      stroke: var(--mono-secondary);
+    }
+
+    .logo-svg .divider {
+      stroke: var(--svg-text);
+      stroke-width: 0.5;
+      stroke-opacity: 0.4;
+    }
+
+    .logo-svg .wordmark {
+      fill: var(--svg-text);
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+    }
+
+    .variant-note {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      text-align: center;
+      min-height: 1.1rem;
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      z-index: 9999;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 12px 24px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .toggle-row span {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: linear-gradient(135deg, #4285f4, #9b72cf);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-switch.mono-toggle {
+      background: linear-gradient(135deg, #666, #999);
+    }
+
+    [data-color="mono"] .toggle-switch.mono-toggle {
+      background: linear-gradient(135deg, #333, #666);
+    }
+
+    .toggle-switch::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="dark"] .toggle-switch.theme-toggle::before {
+      transform: translateX(20px);
+    }
+
+    [data-color="mono"] .toggle-switch.mono-toggle::before {
+      transform: translateX(20px);
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .controls {
+        gap: 18px;
+        padding: 10px 16px;
+      }
+
+      .toggle-row {
+        gap: 8px;
+      }
+
+      .toggle-row span {
+        font-size: 0.8rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="layout-wrapper">
+      <main class="grid" id="grid"></main>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="toggle-row">
+      <span>Light</span>
+      <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="switch" tabindex="0" aria-label="Dark mode" aria-checked="true"></div>
+      <span>Dark</span>
+    </div>
+    <div class="toggle-row">
+      <span>Color</span>
+      <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="switch" tabindex="0" aria-label="Monochrome mode" aria-checked="false"></div>
+      <span>Mono</span>
+    </div>
+  </div>
+
+  <script>
+    const finalists = [
+      {
+        label: "A",
+        rgb: [0, 90, 169],
+        note: "Original"
+      },
+      {
+        label: "B",
+        rgb: [0, 90, 169],
+        note: "Brighter dark hexagons on light background",
+        lightSecondary: [102, 106, 115]
+      },
+      {
+        label: "C",
+        rgb: [0, 90, 169],
+        note: "Mono bright gray on light background",
+        lightSecondary: [144, 144, 148]
+      }
+    ];
+
+    function logoSvg(id) {
+      const tc = `clip-${id}-TC`;
+      const tr = `clip-${id}-TR`;
+      const lc = `clip-${id}-LC`;
+      const c = `clip-${id}-C`;
+      const rc = `clip-${id}-RC`;
+      const bl = `clip-${id}-BL`;
+      const br = `clip-${id}-BR`;
+
+      return `
+        <svg class="logo-svg" viewBox="0 0 127 42" xmlns="http://www.w3.org/2000/svg" aria-label="SAI logo draft">
+          <defs>
+            <clipPath id="${tc}"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" /></clipPath>
+            <clipPath id="${tr}"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" /></clipPath>
+            <clipPath id="${lc}"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" /></clipPath>
+            <clipPath id="${c}"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" /></clipPath>
+            <clipPath id="${rc}"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" /></clipPath>
+            <clipPath id="${bl}"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" /></clipPath>
+            <clipPath id="${br}"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" /></clipPath>
+          </defs>
+
+          <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
+          <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" class="edge-accent" />
+          <line x1="35" y1="13" x2="35" y2="15" class="edge-accent" />
+          <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" class="edge-accent" />
+
+          <line x1="26.20" y1="7" x2="29.80" y2="7" class="edge-secondary" />
+          <line x1="12.20" y1="21" x2="15.80" y2="21" class="edge-secondary" />
+          <line x1="7" y1="29" x2="7" y2="27" class="edge-secondary" />
+          <line x1="26.20" y1="35" x2="29.80" y2="35" class="edge-secondary" />
+
+          <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
+          <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" class="hex-secondary" clip-path="url(#${tc})" />
+          <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="hex-accent" clip-path="url(#${tr})" />
+          <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" class="hex-secondary" clip-path="url(#${lc})" />
+          <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="hex-accent" clip-path="url(#${c})" />
+          <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="hex-accent" clip-path="url(#${rc})" />
+          <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" class="hex-secondary" clip-path="url(#${bl})" />
+          <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="acc-fill" />
+          <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" class="hex-secondary" clip-path="url(#${br})" />
+
+          <line x1="49" y1="1" x2="49" y2="41" class="divider" />
+
+          <text x="55" y="9.6" class="wordmark">Structural</text>
+          <text x="55" y="24" class="wordmark">Analysis</text>
+          <text x="55" y="38.4" class="wordmark">Intelligence</text>
+        </svg>
+      `;
+    }
+
+    function notifyParentTheme(theme) {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: "sai-theme", theme }, "*");
+      }
+    }
+
+    const grid = document.getElementById("grid");
+    const themeToggle = document.querySelector(".theme-toggle");
+    const monoToggle = document.querySelector(".mono-toggle");
+
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    const savedColor = localStorage.getItem("color") || "gradient";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    document.documentElement.setAttribute("data-color", savedColor);
+    notifyParentTheme(savedTheme);
+
+    function updateToggleA11y() {
+      const theme = document.documentElement.getAttribute("data-theme");
+      const color = document.documentElement.getAttribute("data-color");
+      themeToggle.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
+      monoToggle.setAttribute("aria-checked", color === "mono" ? "true" : "false");
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+      notifyParentTheme(newTheme);
+      updateToggleA11y();
+    }
+
+    function toggleColor() {
+      const currentColor = document.documentElement.getAttribute("data-color");
+      const newColor = currentColor === "mono" ? "gradient" : "mono";
+      document.documentElement.setAttribute("data-color", newColor);
+      localStorage.setItem("color", newColor);
+      updateToggleA11y();
+    }
+
+    themeToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleTheme();
+      }
+    });
+
+    monoToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleColor();
+      }
+    });
+
+    finalists.forEach((logo, index) => {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.style.setProperty("--accent-color", `rgb(${logo.rgb.join(",")})`);
+
+      if (logo.lightSecondary) {
+        card.classList.add("light-secondary-boost");
+        card.style.setProperty("--light-secondary-color", `rgb(${logo.lightSecondary.join(",")})`);
+      }
+
+      card.innerHTML = `
+        <div class="card-head">
+          <span class="variation-number">${logo.label}</span>
+        </div>
+        <div class="logo-container">
+          ${logoSvg(index + 1)}
+        </div>
+        <div class="variant-note">${logo.note}</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    updateToggleA11y();
+  </script>
+</body>
+</html>

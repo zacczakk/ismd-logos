@@ -174,13 +174,21 @@
 
     @media (max-width: 760px) {
       .menu-bar {
-        flex-direction: column;
-        align-items: flex-start;
+        width: fit-content;
+        max-width: calc(100% - 24px);
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .title {
+        display: none;
       }
 
       .tabs {
-        width: 100%;
-        justify-content: flex-start;
+        width: auto;
+        justify-content: center;
       }
     }
   </style>
@@ -195,7 +203,10 @@
 
       <nav class="tabs" role="tablist" aria-label="Logo color views">
         <span class="tab-indicator" aria-hidden="true"></span>
-        <button class="tab" id="tab-v3" role="tab" aria-selected="true" aria-controls="viewer" data-src="v3.html">
+        <button class="tab" id="tab-v5" role="tab" aria-selected="true" aria-controls="viewer" data-src="v5.html">
+          Final Selection
+        </button>
+        <button class="tab" id="tab-v3" role="tab" aria-selected="false" aria-controls="viewer" data-src="v3.html">
           Gradient Colors
         </button>
         <button class="tab" id="tab-v4" role="tab" aria-selected="false" aria-controls="viewer" data-src="v4.html">
@@ -209,7 +220,7 @@
         id="viewer"
         class="viewer"
         title="SAI logo view"
-        src="v3.html"
+        src="v5.html"
         loading="eager"
       ></iframe>
     </main>
@@ -220,8 +231,6 @@
     const viewer = document.getElementById("viewer");
     const tabsWrap = document.querySelector(".tabs");
     const indicator = document.querySelector(".tab-indicator");
-    const STORAGE_KEY = "saiLogoView";
-
     let activeTab = null;
     let switchTimer = null;
     let themeObserver = null;
@@ -306,7 +315,6 @@
         }
       }
 
-      localStorage.setItem(STORAGE_KEY, src);
     }
 
     viewer.addEventListener("load", () => {
@@ -351,8 +359,7 @@
       }
     });
 
-    const stored = localStorage.getItem(STORAGE_KEY);
-    const initialTab = tabs.find((tab) => tab.dataset.src === stored) || tabs[0];
+    const initialTab = document.getElementById("tab-v5") || tabs[0];
     syncThemeFromStorage();
     activateTab(initialTab, { animate: false });
     window.setTimeout(bindViewerThemeObserver, 0);
