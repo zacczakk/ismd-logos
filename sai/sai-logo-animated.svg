@@ -7,6 +7,7 @@
         --logo-secondary: #909094;           /* Mono bright gray for C/D variant */
         --svg-text: #1a1a2e;                 /* Dark text for light mode */
         --wave-color: var(--logo-secondary);
+        color: var(--wave-color);
       }
 
       /* Dark Mode */
@@ -15,6 +16,7 @@
           --logo-secondary: #b8b8bc;         /* Brighter gray for dark mode */
           --svg-text: #ffffff;               /* White text for dark mode */
           --wave-color: var(--logo-secondary);
+          color: var(--wave-color);
         }
       }
 
@@ -74,9 +76,9 @@
       " />
     </clipPath>
     <linearGradient id="skeleton-wave" gradientUnits="userSpaceOnUse" x1="-30" y1="-30" x2="0" y2="0">
-      <stop offset="0%" stop-color="var(--wave-color)" stop-opacity="0" />
-      <stop offset="50%" stop-color="var(--wave-color)" stop-opacity="1" />
-      <stop offset="100%" stop-color="var(--wave-color)" stop-opacity="0" />
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
+      <stop offset="50%" stop-color="currentColor" stop-opacity="1" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
       <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="80 80" dur="2s" repeatCount="indefinite" />
     </linearGradient>
   </defs>
