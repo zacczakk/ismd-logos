@@ -156,6 +156,7 @@
       max-height: 120px;
       display: block;
       object-fit: contain;
+      --wave-color: var(--logo-secondary);
     }
 
     .logo-svg .edge-accent {
@@ -206,22 +207,8 @@
       stroke: var(--mono-secondary);
     }
 
-    .logo-svg .anim-dot {
-      fill: var(--accent-color);
-    }
-
-    .logo-svg .anim-dot-2 {
-      /* animation-delay is now handled by begin attribute in SVG */
-    }
-
-    .logo-svg .anim-dot-3 {
-      /* animation-delay is now handled by begin attribute in SVG */
-    }
-
-    /* @keyframes flowPath is no longer needed as animation is handled by SVG SMIL */
-
-    [data-color="mono"] .logo-svg .anim-dot {
-      fill: var(--mono-accent);
+    [data-color="mono"] .logo-svg {
+      --wave-color: var(--mono-secondary);
     }
 
     .logo-svg .divider {
@@ -420,6 +407,19 @@
                 M 35,29 L 40.20,32 L 40.20,38 L 35,41 L 29.80,38 L 29.80,32 Z
               " />
             </clipPath>
+            ${isAnimated ? `
+            <linearGradient id="wave-burst-${id}" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="white" stop-opacity="0" />
+              <stop offset="50%" stop-color="white" stop-opacity="1" />
+              <stop offset="100%" stop-color="white" stop-opacity="0" />
+            </linearGradient>
+            <mask id="wave-mask-${id}">
+              <rect x="-15" y="-10" width="30" height="20" fill="url(#wave-burst-${id})">
+                <animateMotion dur="2.4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" rotate="auto" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0 0.85 1" />
+                <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="2.4s" repeatCount="indefinite" />
+              </rect>
+            </mask>
+            ` : ''}
           </defs>
 
           <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
@@ -434,18 +434,7 @@
 
           ${isAnimated ? `
           <g class="flow-knowledge" clip-path="url(#dot-clip-${id})">
-            <circle r="1.5" class="anim-dot" opacity="0">
-              <animateMotion dur="2.4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0 0.85 1" />
-              <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="2.4s" repeatCount="indefinite" />
-            </circle>
-            <circle r="1.5" class="anim-dot" opacity="0">
-              <animateMotion dur="2.4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0 0.85 1" begin="0.8s" />
-              <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="2.4s" repeatCount="indefinite" begin="0.8s" />
-            </circle>
-            <circle r="1.5" class="anim-dot" opacity="0">
-              <animateMotion dur="2.4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0 0.85 1" begin="1.6s" />
-              <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="2.4s" repeatCount="indefinite" begin="1.6s" />
-            </circle>
+            <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="var(--wave-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#wave-mask-${id})" />
           </g>
           ` : ''}
 
