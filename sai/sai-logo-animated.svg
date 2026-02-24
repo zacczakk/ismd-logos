@@ -73,16 +73,14 @@
         M 35,29 L 40.20,32 L 40.20,38 L 35,41 L 29.80,38 L 29.80,32 Z
       " />
     </clipPath>
-    <linearGradient id="wave-burst" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="skeleton-wave" gradientUnits="userSpaceOnUse" x1="-30" y1="-30" x2="0" y2="0">
       <stop offset="0%" stop-color="white" stop-opacity="0" />
       <stop offset="50%" stop-color="white" stop-opacity="1" />
       <stop offset="100%" stop-color="white" stop-opacity="0" />
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="80 80" dur="2s" repeatCount="indefinite" />
     </linearGradient>
-    <mask id="wave-mask">
-      <rect x="-15" y="-10" width="30" height="20" fill="url(#wave-burst)">
-        <animateMotion dur="2.4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" rotate="auto" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.25 0 0.85 1" />
-        <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="2.4s" repeatCount="indefinite" />
-      </rect>
+    <mask id="skeleton-mask">
+      <rect x="-10" y="-10" width="70" height="70" fill="url(#skeleton-wave)" />
     </mask>
   </defs>
 
@@ -98,7 +96,7 @@
 
   <!-- Flow of knowledge animation -->
   <g class="flow-knowledge" clip-path="url(#dot-clip)">
-    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="var(--wave-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#wave-mask)" />
+    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="var(--wave-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#skeleton-mask)" />
   </g>
 
   <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
