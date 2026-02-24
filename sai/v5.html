@@ -408,14 +408,11 @@
               " />
             </clipPath>
             <linearGradient id="skeleton-wave-${id}" gradientUnits="userSpaceOnUse" x1="-30" y1="-30" x2="0" y2="0">
-              <stop offset="0%" stop-color="white" stop-opacity="0" />
-              <stop offset="50%" stop-color="white" stop-opacity="1" />
-              <stop offset="100%" stop-color="white" stop-opacity="0" />
+              <stop offset="0%" stop-color="var(--wave-color)" stop-opacity="0" />
+              <stop offset="50%" stop-color="var(--wave-color)" stop-opacity="1" />
+              <stop offset="100%" stop-color="var(--wave-color)" stop-opacity="0" />
               <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="80 80" dur="2s" repeatCount="indefinite" />
             </linearGradient>
-            <mask id="skeleton-mask-${id}">
-              <rect x="-10" y="-10" width="70" height="70" fill="url(#skeleton-wave-${id})" />
-            </mask>
           </defs>
 
           <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
@@ -430,7 +427,7 @@
 
           ${isAnimated ? `
           <g class="flow-knowledge" clip-path="url(#dot-clip-${id})">
-            <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="var(--wave-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#skeleton-mask-${id})" />
+            <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="url(#skeleton-wave-${id})" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </g>
           ` : ''}
 
