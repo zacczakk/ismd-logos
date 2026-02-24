@@ -1,0 +1,120 @@
+<svg viewBox="-10 -10 147 62" xmlns="http://www.w3.org/2000/svg" aria-label="SAI logo">
+  <defs>
+    <style>
+      /* Default (Light Mode) */
+      :root {
+        --accent-color: rgb(0, 90, 169);     /* #005aa9 */
+        --logo-secondary: #909094;           /* Mono bright gray for C/D variant */
+        --svg-text: #1a1a2e;                 /* Dark text for light mode */
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --logo-secondary: #b8b8bc;         /* Brighter gray for dark mode */
+          --svg-text: #ffffff;               /* White text for dark mode */
+        }
+      }
+
+      .edge-accent {
+        stroke: var(--accent-color);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+      .acc-fill {
+        fill: var(--accent-color);
+      }
+      .edge-secondary {
+        stroke: var(--logo-secondary);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+      .hex-accent {
+        fill: none;
+        stroke: var(--accent-color);
+        stroke-width: 3;
+      }
+      .hex-secondary {
+        fill: none;
+        stroke: var(--logo-secondary);
+        stroke-width: 3;
+      }
+      .divider {
+        stroke: var(--svg-text);
+        stroke-width: 0.5;
+        stroke-opacity: 0.4;
+      }
+      .wordmark {
+        fill: var(--svg-text);
+        font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+        font-weight: 300;
+        font-size: 12px;
+      }
+      .anim-dot {
+        fill: var(--accent-color);
+      }
+    </style>
+
+    <clipPath id="tc"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" /></clipPath>
+    <clipPath id="tr"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" /></clipPath>
+    <clipPath id="lc"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" /></clipPath>
+    <clipPath id="c"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" /></clipPath>
+    <clipPath id="rc"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" /></clipPath>
+    <clipPath id="bl"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" /></clipPath>
+    <clipPath id="br"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" /></clipPath>
+    
+    <clipPath id="dot-clip">
+      <path clip-rule="evenodd" d="M-10,-10 h157 v72 h-157 z
+        M 21,1 L 26.20,4 L 26.20,10 L 21,13 L 15.80,10 L 15.80,4 Z
+        M 35,1 L 40.20,4 L 40.20,10 L 35,13 L 29.80,10 L 29.80,4 Z
+        M 7,15 L 12.20,18 L 12.20,24 L 7,27 L 1.80,24 L 1.80,18 Z
+        M 21,15 L 26.20,18 L 26.20,24 L 21,27 L 15.80,24 L 15.80,18 Z
+        M 35,15 L 40.20,18 L 40.20,24 L 35,27 L 29.80,24 L 29.80,18 Z
+        M 7,29 L 12.20,32 L 12.20,38 L 7,41 L 1.80,38 L 1.80,32 Z
+        M 35,29 L 40.20,32 L 40.20,38 L 35,41 L 29.80,38 L 29.80,32 Z
+      " />
+    </clipPath>
+  </defs>
+
+  <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
+  <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" class="edge-accent" />
+  <line x1="35" y1="13" x2="35" y2="15" class="edge-accent" />
+  <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" class="edge-accent" />
+
+  <line x1="26.20" y1="7" x2="29.80" y2="7" class="edge-secondary" />
+  <line x1="12.20" y1="21" x2="15.80" y2="21" class="edge-secondary" />
+  <line x1="7" y1="29" x2="7" y2="27" class="edge-secondary" />
+  <line x1="26.20" y1="35" x2="29.80" y2="35" class="edge-secondary" />
+
+  <!-- Flow of knowledge animation -->
+  <g class="flow-knowledge" clip-path="url(#dot-clip)">
+    <circle r="1.5" class="anim-dot" opacity="0">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.3 0 0.95 1" />
+      <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle r="1.5" class="anim-dot" opacity="0">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.3 0 0.95 1" begin="1.33s" />
+      <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="4s" repeatCount="indefinite" begin="1.33s" />
+    </circle>
+    <circle r="1.5" class="anim-dot" opacity="0">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.3 0 0.95 1" begin="2.66s" />
+      <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="4s" repeatCount="indefinite" begin="2.66s" />
+    </circle>
+  </g>
+
+  <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
+  <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" class="hex-secondary" clip-path="url(#tc)" />
+  <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="hex-accent" clip-path="url(#tr)" />
+  <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" class="hex-secondary" clip-path="url(#lc)" />
+  <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="hex-accent" clip-path="url(#c)" />
+  <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="hex-accent" clip-path="url(#rc)" />
+  <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" class="hex-secondary" clip-path="url(#bl)" />
+  <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="acc-fill" />
+  <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" class="hex-secondary" clip-path="url(#br)" />
+
+  <line x1="49" y1="1" x2="49" y2="41" class="divider" />
+
+  <text x="55" y="9.6" class="wordmark">Structural</text>
+  <text x="55" y="24" class="wordmark">Analysis</text>
+  <text x="55" y="38.4" class="wordmark">Intelligence</text>
+</svg>

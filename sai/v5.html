@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -205,6 +206,24 @@
       stroke: var(--mono-secondary);
     }
 
+    .logo-svg .anim-dot {
+      fill: var(--accent-color);
+    }
+
+    .logo-svg .anim-dot-2 {
+      /* animation-delay is now handled by begin attribute in SVG */
+    }
+
+    .logo-svg .anim-dot-3 {
+      /* animation-delay is now handled by begin attribute in SVG */
+    }
+
+    /* @keyframes flowPath is no longer needed as animation is handled by SVG SMIL */
+
+    [data-color="mono"] .logo-svg .anim-dot {
+      fill: var(--mono-accent);
+    }
+
     .logo-svg .divider {
       stroke: var(--svg-text);
       stroke-width: 0.5;
@@ -317,9 +336,9 @@
         font-size: 0.8rem;
       }
     }
-
   </style>
 </head>
+
 <body>
   <div class="page">
     <div class="layout-wrapper">
@@ -330,12 +349,14 @@
   <div class="controls">
     <div class="toggle-row">
       <span>Light</span>
-      <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="switch" tabindex="0" aria-label="Dark mode" aria-checked="true"></div>
+      <div class="toggle-switch theme-toggle" onclick="toggleTheme()" role="switch" tabindex="0" aria-label="Dark mode"
+        aria-checked="true"></div>
       <span>Dark</span>
     </div>
     <div class="toggle-row">
       <span>Color</span>
-      <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="switch" tabindex="0" aria-label="Monochrome mode" aria-checked="false"></div>
+      <div class="toggle-switch mono-toggle" onclick="toggleColor()" role="switch" tabindex="0"
+        aria-label="Monochrome mode" aria-checked="false"></div>
       <span>Mono</span>
     </div>
   </div>
@@ -358,10 +379,17 @@
         rgb: [0, 90, 169],
         note: "Mono bright gray on light background",
         lightSecondary: [144, 144, 148]
+      },
+      {
+        label: "D",
+        rgb: [0, 90, 169],
+        note: "Animated knowledge flow",
+        lightSecondary: [144, 144, 148],
+        isAnimated: true
       }
     ];
 
-    function logoSvg(id) {
+    function logoSvg(id, isAnimated) {
       const tc = `clip-${id}-TC`;
       const tr = `clip-${id}-TR`;
       const lc = `clip-${id}-LC`;
@@ -380,6 +408,18 @@
             <clipPath id="${rc}"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" /></clipPath>
             <clipPath id="${bl}"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" /></clipPath>
             <clipPath id="${br}"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" /></clipPath>
+            
+            <clipPath id="dot-clip-${id}">
+              <path clip-rule="evenodd" d="M-10,-10 h157 v72 h-157 z
+                M 21,1 L 26.20,4 L 26.20,10 L 21,13 L 15.80,10 L 15.80,4 Z
+                M 35,1 L 40.20,4 L 40.20,10 L 35,13 L 29.80,10 L 29.80,4 Z
+                M 7,15 L 12.20,18 L 12.20,24 L 7,27 L 1.80,24 L 1.80,18 Z
+                M 21,15 L 26.20,18 L 26.20,24 L 21,27 L 15.80,24 L 15.80,18 Z
+                M 35,15 L 40.20,18 L 40.20,24 L 35,27 L 29.80,24 L 29.80,18 Z
+                M 7,29 L 12.20,32 L 12.20,38 L 7,41 L 1.80,38 L 1.80,32 Z
+                M 35,29 L 40.20,32 L 40.20,38 L 35,41 L 29.80,38 L 29.80,32 Z
+              " />
+            </clipPath>
           </defs>
 
           <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
@@ -391,6 +431,23 @@
           <line x1="12.20" y1="21" x2="15.80" y2="21" class="edge-secondary" />
           <line x1="7" y1="29" x2="7" y2="27" class="edge-secondary" />
           <line x1="26.20" y1="35" x2="29.80" y2="35" class="edge-secondary" />
+
+          ${isAnimated ? `
+          <g class="flow-knowledge" clip-path="url(#dot-clip-${id})">
+            <circle r="1.5" class="anim-dot" opacity="0">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.3 0 0.95 1" />
+              <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="4s" repeatCount="indefinite" />
+            </circle>
+            <circle r="1.5" class="anim-dot" opacity="0">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.3 0 0.95 1" begin="1.33s" />
+              <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="4s" repeatCount="indefinite" begin="1.33s" />
+            </circle>
+            <circle r="1.5" class="anim-dot" opacity="0">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" keyPoints="0;1" keyTimes="0; 1" calcMode="spline" keySplines="0.3 0 0.95 1" begin="2.66s" />
+              <animate attributeName="opacity" values="0; 1; 1; 1; 0" keyTimes="0; 0.05; 0.5; 0.95; 1" dur="4s" repeatCount="indefinite" begin="2.66s" />
+            </circle>
+          </g>
+          ` : ''}
 
           <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
           <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" class="hex-secondary" clip-path="url(#${tc})" />
@@ -407,6 +464,7 @@
           <text x="55" y="9.6" class="wordmark">Structural</text>
           <text x="55" y="24" class="wordmark">Analysis</text>
           <text x="55" y="38.4" class="wordmark">Intelligence</text>
+
         </svg>
       `;
     }
@@ -480,7 +538,7 @@
           <span class="variation-number">${logo.label}</span>
         </div>
         <div class="logo-container">
-          ${logoSvg(index + 1)}
+          ${logoSvg(index + 1, logo.isAnimated)}
         </div>
         <div class="variant-note">${logo.note}</div>
       `;
@@ -490,4 +548,5 @@
     updateToggleA11y();
   </script>
 </body>
+
 </html>
