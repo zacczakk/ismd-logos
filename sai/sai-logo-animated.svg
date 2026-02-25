@@ -38,21 +38,27 @@
         stroke: var(--accent-color);
         stroke-width: 3;
       }
-      .hex-secondary {
-        fill: none;
-        stroke: var(--logo-secondary);
-        stroke-width: 3;
-      }
-      .divider {
-        stroke: var(--svg-text);
-        stroke-width: 0.5;
-        stroke-opacity: 0.4;
-      }
       .wordmark {
         fill: var(--svg-text);
         font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
         font-weight: 300;
         font-size: 12px;
+      }
+      path.flow-wave {
+        stroke: var(--wave-color);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke-dasharray: 40 100;
+        stroke-dashoffset: 140;
+        animation: sweepWave 2s linear infinite;
+      }
+      @keyframes sweepWave {
+        0% { stroke-dashoffset: 140; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
       }
     </style>
 
@@ -71,16 +77,6 @@
         M 7,15 L 12.20,18 L 12.20,24 L 7,27 L 1.80,24 L 1.80,18 Z
         M 21,15 L 26.20,18 L 26.20,24 L 21,27 L 15.80,24 L 15.80,18 Z
         M 35,15 L 40.20,18 L 40.20,24 L 35,27 L 29.80,24 L 29.80,18 Z
-        M 7,29 L 12.20,32 L 12.20,38 L 7,41 L 1.80,38 L 1.80,32 Z
-        M 35,29 L 40.20,32 L 40.20,38 L 35,41 L 29.80,38 L 29.80,32 Z
-      " />
-    </clipPath>
-    <linearGradient id="skeleton-wave" gradientUnits="userSpaceOnUse" x1="-30" y1="-30" x2="0" y2="0">
-      <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
-      <stop offset="50%" stop-color="currentColor" stop-opacity="1" />
-      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
-      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="80 80" dur="2s" repeatCount="indefinite" />
-    </linearGradient>
   </defs>
 
   <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
@@ -95,7 +91,7 @@
 
   <!-- Flow of knowledge animation -->
   <g class="flow-knowledge" clip-path="url(#dot-clip)">
-    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="url(#skeleton-wave)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
   </g>
 
   <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />

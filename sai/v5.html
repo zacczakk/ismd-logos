@@ -212,6 +212,37 @@
       --wave-color: var(--mono-secondary);
     }
 
+    .logo-svg path.flow-wave {
+      stroke: var(--wave-color);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 40 100;
+      stroke-dashoffset: 140;
+      animation: sweepWave 2s linear infinite;
+    }
+
+    @keyframes sweepWave {
+      0% {
+        stroke-dashoffset: 140;
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+      }
+    }
+
     .logo-svg .divider {
       stroke: var(--svg-text);
       stroke-width: 0.5;
@@ -411,12 +442,6 @@
                 M 35,29 L 40.20,32 L 40.20,38 L 35,41 L 29.80,38 L 29.80,32 Z
               " />
             </clipPath>
-            <linearGradient id="skeleton-wave-${id}" gradientUnits="userSpaceOnUse" x1="-30" y1="-30" x2="0" y2="0">
-              <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
-              <stop offset="50%" stop-color="currentColor" stop-opacity="1" />
-              <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
-              <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="80 80" dur="2s" repeatCount="indefinite" />
-            </linearGradient>
           </defs>
 
           <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
@@ -431,7 +456,7 @@
 
           ${isAnimated ? `
           <g class="flow-knowledge" clip-path="${ref(`dot-clip-${id}`)}">
-            <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" fill="none" stroke="${ref(wave)}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
           </g>
           ` : ''}
 
