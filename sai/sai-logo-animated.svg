@@ -44,22 +44,22 @@
         font-weight: 300;
         font-size: 12px;
       }
-      path.flow-wave {
-        stroke: var(--wave-color);
-        stroke-width: 1.5;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none;
-        stroke-dasharray: 40 100;
-        stroke-dashoffset: 140;
-        animation: sweepWave 2s linear infinite;
+      .wave-layer {
+        -webkit-mask-image: linear-gradient(135deg, transparent 40%, white 50%, transparent 60%);
+        -webkit-mask-size: 300% 300%;
+        -webkit-mask-repeat: no-repeat;
+        mask-image: linear-gradient(135deg, transparent 40%, white 50%, transparent 60%);
+        mask-size: 300% 300%;
+        mask-repeat: no-repeat;
+        animation: sweepMask 2.4s linear infinite;
       }
-      @keyframes sweepWave {
-        0% { stroke-dashoffset: 140; opacity: 0; }
-        20% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { stroke-dashoffset: 0; opacity: 0; }
+      @keyframes sweepMask {
+        0% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; }
+        100% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; }
       }
+      .wave-layer .edge-accent { stroke: var(--wave-color); }
+      .wave-layer .hex-accent { stroke: var(--wave-color); }
+      .wave-layer .acc-fill { fill: var(--wave-color); }
     </style>
 
     <clipPath id="tc"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" /></clipPath>
@@ -90,8 +90,16 @@
   <line x1="26.20" y1="35" x2="29.80" y2="35" class="edge-secondary" />
 
   <!-- Flow of knowledge animation -->
-  <g class="flow-knowledge" clip-path="url(#dot-clip)">
-    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
+  <g class="wave-layer">
+    <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
+    <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
+    <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="hex-accent" clip-path="url(#c)" />
+    <line x1="24.80" y1="17.20" x2="31.20" y2="10.80" class="edge-accent" />
+    <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="hex-accent" clip-path="url(#tr)" />
+    <line x1="35" y1="13" x2="35" y2="15" class="edge-accent" />
+    <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="hex-accent" clip-path="url(#rc)" />
+    <line x1="31.20" y1="24.80" x2="24.80" y2="31.20" class="edge-accent" />
+    <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="acc-fill" />
   </g>
 
   <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
