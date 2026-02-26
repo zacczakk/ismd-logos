@@ -53,8 +53,8 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         fill: none;
-        stroke-dasharray: 80 160;
-        stroke-dashoffset: 80;
+        stroke-dasharray: 110 160;
+        stroke-dashoffset: 110;
         animation: sweepWave 2.4s linear infinite;
       }
       path.flow-wave-tail {
@@ -63,23 +63,23 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         fill: none;
-        stroke-dasharray: 120 160;
-        stroke-dashoffset: 120;
+        stroke-dasharray: 160 160;
+        stroke-dashoffset: 160;
         mask: url(#tail-mask);
         -webkit-mask: url(#tail-mask);
         animation: sweepTail 2.4s linear infinite;
       }
       @keyframes sweepWave {
-        0% { stroke-dashoffset: 80; opacity: 0; }
+        0% { stroke-dashoffset: 110; opacity: 0; }
         10% { opacity: 1; }
         85% { opacity: 1; }
-        100% { stroke-dashoffset: -60; opacity: 0; }
+        100% { stroke-dashoffset: -30; opacity: 0; }
       }
       @keyframes sweepTail {
-        0% { stroke-dashoffset: 120; opacity: 0; }
+        0% { stroke-dashoffset: 160; opacity: 0; }
         10% { opacity: 0.8; }
         85% { opacity: 0.8; }
-        100% { stroke-dashoffset: -20; opacity: 0; }
+        100% { stroke-dashoffset: 20; opacity: 0; }
       }
       .wave-fill {
         fill: var(--wave-color);
@@ -96,8 +96,8 @@
       @keyframes hexWave {
         0% { opacity: 0; }
         10% { opacity: 1; }
-        40% { opacity: 1; }
-        80% { opacity: 0; }
+        60% { opacity: 1; }
+        90% { opacity: 0; }
         100% { opacity: 0; }
       }
     </style>
