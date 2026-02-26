@@ -228,7 +228,7 @@
       fill: none;
       stroke-dasharray: 110 160;
       stroke-dashoffset: 110;
-      animation: sweepWave 2.4s linear infinite;
+      animation: sweepWave 3s linear infinite;
     }
 
     .logo-svg path.flow-wave-tail {
@@ -241,7 +241,7 @@
       stroke-dashoffset: 160;
       mask: url(#tail-mask);
       -webkit-mask: url(#tail-mask);
-      animation: sweepTail 2.4s linear infinite;
+      animation: sweepTail 3s linear infinite;
     }
 
     @keyframes sweepWave {
@@ -254,8 +254,13 @@
         opacity: 1;
       }
 
-      85% {
+      65% {
         opacity: 1;
+      }
+
+      80% {
+        stroke-dashoffset: -30;
+        opacity: 0;
       }
 
       100% {
@@ -274,8 +279,13 @@
         opacity: 1;
       }
 
-      85% {
+      65% {
         opacity: 1;
+      }
+
+      80% {
+        stroke-dashoffset: 20;
+        opacity: 0;
       }
 
       100% {
@@ -286,7 +296,7 @@
 
     .logo-svg .wave-fill {
       fill: var(--wave-color);
-      animation: hexWave 2.4s linear infinite;
+      animation: hexWave 3s linear infinite;
       opacity: 0;
     }
 
@@ -294,7 +304,7 @@
       fill: none;
       stroke: var(--wave-color);
       stroke-width: 3;
-      animation: hexWave 2.4s linear infinite;
+      animation: hexWave 3s linear infinite;
       opacity: 0;
     }
 
@@ -307,11 +317,11 @@
         opacity: 1;
       }
 
-      60% {
+      50% {
         opacity: 1;
       }
 
-      90% {
+      70% {
         opacity: 0;
       }
 

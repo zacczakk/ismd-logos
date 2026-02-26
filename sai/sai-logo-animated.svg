@@ -55,7 +55,7 @@
         fill: none;
         stroke-dasharray: 110 160;
         stroke-dashoffset: 110;
-        animation: sweepWave 2.4s linear infinite;
+        animation: sweepWave 3s linear infinite;
       }
       path.flow-wave-tail {
         stroke: var(--wave-color);
@@ -67,37 +67,39 @@
         stroke-dashoffset: 160;
         mask: url(#tail-mask);
         -webkit-mask: url(#tail-mask);
-        animation: sweepTail 2.4s linear infinite;
+        animation: sweepTail 3s linear infinite;
       }
       @keyframes sweepWave {
         0% { stroke-dashoffset: 110; opacity: 0; }
         10% { opacity: 1; }
-        85% { opacity: 1; }
+        65% { opacity: 1; }
+        80% { stroke-dashoffset: -30; opacity: 0; }
         100% { stroke-dashoffset: -30; opacity: 0; }
       }
       @keyframes sweepTail {
         0% { stroke-dashoffset: 160; opacity: 0; }
         10% { opacity: 0.8; }
-        85% { opacity: 0.8; }
+        65% { opacity: 0.8; }
+        80% { stroke-dashoffset: 20; opacity: 0; }
         100% { stroke-dashoffset: 20; opacity: 0; }
       }
       .wave-fill {
         fill: var(--wave-color);
         opacity: 0;
-        animation: hexWave 2.4s linear infinite;
+        animation: hexWave 3s linear infinite;
       }
       .wave-stroke {
         fill: none;
         stroke: var(--wave-color);
         stroke-width: 3;
         opacity: 0;
-        animation: hexWave 2.4s linear infinite;
+        animation: hexWave 3s linear infinite;
       }
       @keyframes hexWave {
         0% { opacity: 0; }
         10% { opacity: 1; }
-        60% { opacity: 1; }
-        90% { opacity: 0; }
+        50% { opacity: 1; }
+        70% { opacity: 0; }
         100% { opacity: 0; }
       }
     </style>
