@@ -226,8 +226,8 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
-      stroke-dasharray: 110 160;
-      stroke-dashoffset: 110;
+      stroke-dasharray: 80 220;
+      stroke-dashoffset: 80;
       animation: sweepWave 3s linear infinite;
     }
 
@@ -237,8 +237,8 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
-      stroke-dasharray: 160 160;
-      stroke-dashoffset: 160;
+      stroke-dasharray: 140 220;
+      stroke-dashoffset: 140;
       mask: url(#tail-mask);
       -webkit-mask: url(#tail-mask);
       animation: sweepTail 3s linear infinite;
@@ -246,50 +246,42 @@
 
     @keyframes sweepWave {
       0% {
-        stroke-dashoffset: 110;
+        stroke-dashoffset: 80;
         opacity: 0;
       }
 
-      10% {
-        opacity: 1;
-      }
-
-      65% {
+      1% {
         opacity: 1;
       }
 
       80% {
-        stroke-dashoffset: -30;
-        opacity: 0;
+        stroke-dashoffset: -140;
+        opacity: 1;
       }
 
       100% {
-        stroke-dashoffset: -30;
+        stroke-dashoffset: -140;
         opacity: 0;
       }
     }
 
     @keyframes sweepTail {
       0% {
-        stroke-dashoffset: 160;
+        stroke-dashoffset: 140;
         opacity: 0;
       }
 
-      10% {
-        opacity: 1;
-      }
-
-      65% {
+      1% {
         opacity: 1;
       }
 
       80% {
-        stroke-dashoffset: 20;
-        opacity: 0;
+        stroke-dashoffset: -80;
+        opacity: 1;
       }
 
       100% {
-        stroke-dashoffset: 20;
+        stroke-dashoffset: -80;
         opacity: 0;
       }
     }
@@ -313,15 +305,15 @@
         opacity: 0;
       }
 
-      10% {
+      5% {
         opacity: 1;
       }
 
-      65% {
+      29% {
         opacity: 1;
       }
 
-      80% {
+      51% {
         opacity: 0;
       }
 
@@ -571,10 +563,10 @@
               <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
             </g>
             <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="wave-fill" style="animation-delay: 0s; fill: ${ref(`flow-grad-${id}`)}" />
-            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="wave-stroke" clip-path="${ref(c)}" style="animation-delay: 0.34s; stroke: ${ref(`flow-grad-${id}`)}" />
-            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="wave-stroke" clip-path="${ref(tr)}" style="animation-delay: 0.68s; stroke: ${ref(`flow-grad-${id}`)}" />
-            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="wave-stroke" clip-path="${ref(rc)}" style="animation-delay: 1.02s; stroke: ${ref(`flow-grad-${id}`)}" />
-            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="wave-fill" style="animation-delay: 1.15s; fill: ${ref(`flow-grad-${id}`)}" />
+            <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="wave-stroke" clip-path="${ref(c)}" style="animation-delay: 0.22s; stroke: ${ref(`flow-grad-${id}`)}" />
+            <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="wave-stroke" clip-path="${ref(tr)}" style="animation-delay: 0.43s; stroke: ${ref(`flow-grad-${id}`)}" />
+            <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="wave-stroke" clip-path="${ref(rc)}" style="animation-delay: 0.58s; stroke: ${ref(`flow-grad-${id}`)}" />
+            <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="wave-fill" style="animation-delay: 0.80s; fill: ${ref(`flow-grad-${id}`)}" />
           </g>
           ` : ''}
 
