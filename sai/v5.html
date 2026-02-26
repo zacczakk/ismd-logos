@@ -226,8 +226,8 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
-      stroke-dasharray: 40 160;
-      stroke-dashoffset: 40;
+      stroke-dasharray: 60 160;
+      stroke-dashoffset: 60;
       animation: sweepWave 2.4s linear infinite;
     }
 
@@ -237,8 +237,8 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
-      stroke-dasharray: 80 160;
-      stroke-dashoffset: 80;
+      stroke-dasharray: 100 160;
+      stroke-dashoffset: 100;
       mask: url(#tail-mask);
       -webkit-mask: url(#tail-mask);
       animation: sweepTail 2.4s linear infinite;
@@ -246,7 +246,7 @@
 
     @keyframes sweepWave {
       0% {
-        stroke-dashoffset: 40;
+        stroke-dashoffset: 60;
         opacity: 0;
       }
 
@@ -259,14 +259,14 @@
       }
 
       100% {
-        stroke-dashoffset: -100;
+        stroke-dashoffset: -80;
         opacity: 0;
       }
     }
 
     @keyframes sweepTail {
       0% {
-        stroke-dashoffset: 80;
+        stroke-dashoffset: 100;
         opacity: 0;
       }
 
@@ -279,7 +279,7 @@
       }
 
       100% {
-        stroke-dashoffset: -60;
+        stroke-dashoffset: -40;
         opacity: 0;
       }
     }
@@ -303,15 +303,15 @@
         opacity: 0;
       }
 
-      5% {
+      10% {
         opacity: 1;
       }
 
-      20% {
+      40% {
         opacity: 1;
       }
 
-      30% {
+      80% {
         opacity: 0;
       }
 
