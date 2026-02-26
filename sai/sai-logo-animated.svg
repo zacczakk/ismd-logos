@@ -116,11 +116,10 @@
         M 35,15 L 40.20,18 L 40.20,24 L 35,27 L 29.80,24 L 29.80,18 Z
       " />
     </clipPath>
-    <linearGradient id="flow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="var(--wave-color)" stop-opacity="0" />
-      <stop offset="50%" stop-color="var(--wave-color)" stop-opacity="1" />
+    <radialGradient id="flow-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="var(--wave-color)" stop-opacity="1" />
       <stop offset="100%" stop-color="var(--wave-color)" stop-opacity="0" />
-    </linearGradient>
+    </radialGradient>
     <linearGradient id="tail-fade" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="white" stop-opacity="0" />
       <stop offset="100%" stop-color="white" stop-opacity="1" />
