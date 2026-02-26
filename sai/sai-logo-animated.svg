@@ -50,7 +50,7 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         fill: none;
-        stroke-dasharray: 40 160;
+        stroke-dasharray: 0 160 30 160 5 2 3 3 2 4 1 5;
         stroke-dashoffset: 40;
         animation: sweepWave 2.4s linear infinite;
       }
@@ -98,6 +98,11 @@
         M 35,15 L 40.20,18 L 40.20,24 L 35,27 L 29.80,24 L 29.80,18 Z
       " />
     </clipPath>
+    <linearGradient id="flow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--wave-color)" stop-opacity="0" />
+      <stop offset="50%" stop-color="var(--wave-color)" stop-opacity="1" />
+      <stop offset="100%" stop-color="var(--wave-color)" stop-opacity="0" />
+    </linearGradient>
   </defs>
 
   <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-accent" />
@@ -113,11 +118,11 @@
   <!-- Flow of knowledge animation -->
   <g class="wave-layer">
     <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
-    <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="wave-fill" style="animation-delay: 0s" />
-    <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="wave-stroke" clip-path="url(#c)" style="animation-delay: 0.34s" />
-    <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="wave-stroke" clip-path="url(#tr)" style="animation-delay: 0.68s" />
-    <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="wave-stroke" clip-path="url(#rc)" style="animation-delay: 1.02s" />
-    <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="wave-fill" style="animation-delay: 1.37s" />
+    <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="wave-fill" style="animation-delay: 0s; fill: url(#flow-grad)" />
+    <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="wave-stroke" clip-path="url(#c)" style="animation-delay: 0.34s; stroke: url(#flow-grad)" />
+    <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="wave-stroke" clip-path="url(#tr)" style="animation-delay: 0.68s; stroke: url(#flow-grad)" />
+    <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" class="wave-stroke" clip-path="url(#rc)" style="animation-delay: 1.02s; stroke: url(#flow-grad)" />
+    <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" class="wave-fill" style="animation-delay: 1.37s; fill: url(#flow-grad)" />
   </g>
 
   <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="acc-fill" />
