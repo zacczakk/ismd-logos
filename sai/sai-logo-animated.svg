@@ -130,6 +130,18 @@
     <mask id="tail-mask">
       <rect width="100%" height="100%" fill="url(#tail-fade)" />
     </mask>
+    <mask id="hex-hole-mask">
+      <rect x="-50%" y="-50%" width="200%" height="200%" fill="white" />
+      <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="black" />
+      <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="black" />
+      <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="black" />
+      <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="black" />
+      <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="black" />
+      <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="black" />
+      <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="black" />
+      <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="black" />
+      <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="black" />
+    </mask>
   </defs>
 
   <line x1="10.80" y1="10.80" x2="17.20" y2="17.20" class="edge-secondary" />
@@ -154,8 +166,10 @@
 
   <!-- Flow of knowledge animation -->
   <g class="wave-layer">
-    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave-tail" />
-    <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
+    <g mask="url(#hex-hole-mask)" style="-webkit-mask: url(#hex-hole-mask)">
+      <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave-tail" />
+      <path d="M 7,7 L 21,21 L 35,7 L 35,21 L 21,35" class="flow-wave" />
+    </g>
     <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" class="wave-fill" style="animation-delay: 0s; fill: url(#flow-grad)" />
     <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" class="wave-stroke" clip-path="url(#c)" style="animation-delay: 0.34s; stroke: url(#flow-grad)" />
     <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" class="wave-stroke" clip-path="url(#tr)" style="animation-delay: 0.68s; stroke: url(#flow-grad)" />
