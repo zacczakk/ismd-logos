@@ -96,8 +96,8 @@
       @keyframes hexWave {
         0% { opacity: 0; }
         4% { opacity: 1; }
-        44% { opacity: 1; }
-        52% { opacity: 0; }
+        40% { opacity: 1; }
+        48% { opacity: 0; }
         100% { opacity: 0; }
       }
     </style>
