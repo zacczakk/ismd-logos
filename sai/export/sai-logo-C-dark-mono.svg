@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1275 500"
+     width="1275" height="500" aria-label="SAI Logo - Variant C - dark - mono">
+  <defs>
+
+  </defs>
+
+  <g transform="translate(138.75,118.75) scale(6.2500)">
+    <defs>
+      <clipPath id="TC"><polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4"/></clipPath>
+      <clipPath id="TR"><polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4"/></clipPath>
+      <clipPath id="LC"><polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18"/></clipPath>
+      <clipPath id="C"><polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18"/></clipPath>
+      <clipPath id="RC"><polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18"/></clipPath>
+      <clipPath id="BL"><polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32"/></clipPath>
+      <clipPath id="BR"><polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32"/></clipPath>
+    </defs>
+    <line x1="10.8" y1="10.8" x2="17.2" y2="17.2" stroke="#b8b8bc" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="24.8" y1="17.2" x2="31.2" y2="10.8" stroke="#b8b8bc" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="35" y1="13" x2="35" y2="15" stroke="#b8b8bc" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="31.2" y1="24.8" x2="24.8" y2="31.2" stroke="#b8b8bc" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="26.2" y1="7" x2="29.8" y2="7" stroke="#606064" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12.2" y1="21" x2="15.8" y2="21" stroke="#606064" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="7" y1="29" x2="7" y2="27" stroke="#606064" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="26.2" y1="35" x2="29.8" y2="35" stroke="#606064" stroke-width="1.5" stroke-linecap="round"/>
+    <polygon points="7,1 12.20,4 12.20,10 7,13 1.80,10 1.80,4" fill="#b8b8bc"/>
+    <polygon points="21,1 26.20,4 26.20,10 21,13 15.80,10 15.80,4" fill="none" stroke="#606064" stroke-width="3" clip-path="url(#TC)"/>
+    <polygon points="35,1 40.20,4 40.20,10 35,13 29.80,10 29.80,4" fill="none" stroke="#b8b8bc" stroke-width="3" clip-path="url(#TR)"/>
+    <polygon points="7,15 12.20,18 12.20,24 7,27 1.80,24 1.80,18" fill="none" stroke="#606064" stroke-width="3" clip-path="url(#LC)"/>
+    <polygon points="21,15 26.20,18 26.20,24 21,27 15.80,24 15.80,18" fill="none" stroke="#b8b8bc" stroke-width="3" clip-path="url(#C)"/>
+    <polygon points="35,15 40.20,18 40.20,24 35,27 29.80,24 29.80,18" fill="none" stroke="#b8b8bc" stroke-width="3" clip-path="url(#RC)"/>
+    <polygon points="7,29 12.20,32 12.20,38 7,41 1.80,38 1.80,32" fill="none" stroke="#606064" stroke-width="3" clip-path="url(#BL)"/>
+    <polygon points="21,29 26.20,32 26.20,38 21,41 15.80,38 15.80,32" fill="#b8b8bc"/>
+    <polygon points="35,29 40.20,32 40.20,38 35,41 29.80,38 29.80,32" fill="none" stroke="#606064" stroke-width="3" clip-path="url(#BR)"/>
+  </g>
+
+  <rect x="457.07" y="125" width="5.5" height="250" fill="#ffffff"/>
+
+  <text x="507.1" y="189.37" fill="#ffffff" font-family="Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-weight="300" font-size="80">Structural</text>
+  <text x="507.1" y="279.37" fill="#ffffff" font-family="Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-weight="300" font-size="80">Analysis</text>
+  <text x="507.1" y="369.37" fill="#ffffff" font-family="Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-weight="300" font-size="80">Intelligence</text>
+</svg>
